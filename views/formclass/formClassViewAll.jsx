@@ -5,8 +5,8 @@ class home extends React.Component {
 
       const student=this.props.students.map(student=>
         {
-            const editStudentUrl = '/formclass/' + student.id +"?_method=put";
-            const deleteStudentUrl = '/formclass' + student.id+ "?_method=delete";
+            const editStudentUrl = '/formclass/student/' + student.id +"/edit/";
+            const deleteStudentUrl = '/formclass/student/' + student.id+ "?_method=delete";
             return <div class= {"row mx-auto"}>
             <div class = {"col-2 border"}>
                 <p class={"mt-2"}>{student.name}</p>
@@ -30,7 +30,7 @@ class home extends React.Component {
                 <p class={"mt-2"}>{student.cca}</p>
             </div>
             <div class = {"col-1 border "}>
-                <form  class={"mt-2"} action={editStudentUrl} method="POST">
+                <form  class={"mt-2"} action={editStudentUrl} method="GET">
                         <input type="submit" value="Edit"/>
                 </form>
             </div>

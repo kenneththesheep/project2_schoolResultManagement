@@ -61,15 +61,15 @@ module.exports = (dbPoolInstance) => {
 
 
 
-  let viewForm = (userlogin, callback) => {
+  let viewStudent = (id, callback) => {
     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-    console.log(userlogin);
-    let query = 'SELECT * FROM teachers WHERE loginname= ($1)';
+
+    let query = 'SELECT * FROM students WHERE id= ($1)';
     //let query = 'SELECT * FROM teachers';
-    let loginname = [userlogin.loginname];
+    let student_id = [id.id];
     //loginname= [ 'bobobobob'];
     let outgoingStatus = {};
-    dbPoolInstance.query(query, loginname, (error, queryResult) => {
+    dbPoolInstance.query(query, student_id, (error, queryResult) => {
       if( error ){
 
         // invoke callback function with results after query has executed
@@ -78,31 +78,15 @@ module.exports = (dbPoolInstance) => {
       }else{
 
         // invoke callback function with results after query has executed
+                console.log(queryResult.rows);
 
-        if( queryResult.rows.length > 0 ){
-
-            console.log();
-            if( userlogin. password === queryResult.rows[0].password)
-            {
-                outgoingStatus.login = true;
-                outgoingStatus.teacherId= parseInt(queryResult.rows[0].id);
-                outgoingStatus.teacherName=queryResult.rows[0].name;
+                outgoingStatus.student=queryResult.rows[0];
                 callback(null, outgoingStatus);
-            }else{
-            outgoingStatus.login = false;
-            outgoingStatus.message = "Wrong password";
-          callback(null, outgoingStatus);
-
-            }
 
 
 
-        }else{
-            outgoingStatus.login = false;
-            outgoingStatus.message = "Wrong user name";
-          callback(null, outgoingStatus);
 
-        }
+
       }
     });
   };
@@ -110,6 +94,6 @@ module.exports = (dbPoolInstance) => {
   return {
     optionClassForm: optionClassForm,
 
-    viewForm:viewForm,
+    viewStudent:viewStudent,
   };
 };

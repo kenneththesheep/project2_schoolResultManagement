@@ -31,7 +31,7 @@ class home extends React.Component {
             <div class={"col-4 mt-5 border"}>
             <h4  class={"mt-3"}>View Individual Student</h4>
 
-            <form method="GET" action="/formclass/student"  >
+            <form method="GET" action="/formclass/student/"  >
             <div class = {"row"}>
 
             <div class = {"col-6 mt-3 "}>

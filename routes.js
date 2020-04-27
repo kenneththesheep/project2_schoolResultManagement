@@ -25,6 +25,7 @@ module.exports = (app, allModels) => {
   app.get('/home/', loginControllerCallbacks.home);
   app.get('/formclass/', formClassControllerCallbacks.formLand);
   app.get('/formclass/all', formClassControllerCallbacks.viewall);
-
+  app.get('/formclass/student', formClassControllerCallbacks.redirect);
+  app.get('/formclass/student/:id', formClassControllerCallbacks.individual);
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };
