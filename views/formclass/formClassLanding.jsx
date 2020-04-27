@@ -49,7 +49,7 @@ class home extends React.Component {
 
             <div class={"col-4 mt-5 border"}>
             <h4  class={"mt-3"}>Add New Student</h4>
-            <p class ={"mt-5"}><a href={"#"}>Add New Student</a></p>
+            <p class ={"mt-5"}><a href={"/formclass/student/add"}>Add New Student</a></p>
             </div>
             </div>
 

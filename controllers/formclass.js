@@ -80,6 +80,38 @@ let individualFormClassControllerCallback = (request, response) => {
 
   };
 
+let addFormStudentFormClassControllerCallback = (request, response) => {
+    console.log("I can ADD");
+    //response.send(request.params);
+    //response.send("I can ADD");
+    response.render("formclass/addIndividualStudent");
+
+
+ /*       db.formClass.viewStudent(data,(error, returningResult) => {
+        //response.send(returningResult);
+        response.render('formclass/individual_student', returningResult);
+      });*/
+
+  };
+
+
+  let addStudentClassControllerCallback = (request, response) => {
+    console.log("I can process process ADD");
+    let teachers_id= request.cookies.userId;
+    //response.send(request.params);
+    //response.send(request.body);
+    //response.render("formclass/addIndividualStudent");
+    data = request.body;
+    data.teachers_id= teachers_id;
+       db.formClass.addStudent(data,(error, returningResult) => {
+        const url = '/formclass/student/'+returningResult.student_Id;
+        //response.send(returningResult);
+        response.redirect(url);
+        //response.render('formclass/individual_student', returningResult);
+      });
+
+  };
+
   let homeControllerCallback = (request, response) => {
     var loginSession = request.cookies['loginSession'];
         if(loginSession === undefined){
@@ -103,6 +135,8 @@ let individualFormClassControllerCallback = (request, response) => {
     viewall: viewAllFormClassControllerCallback,
     redirect: redirectFormClassControllerCallback,
     individual: individualFormClassControllerCallback,
+    addFormStudent: addFormStudentFormClassControllerCallback,
+    add:addStudentClassControllerCallback,
     home: homeControllerCallback,
   };
 

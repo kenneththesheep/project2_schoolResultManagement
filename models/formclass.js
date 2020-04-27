@@ -91,9 +91,99 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  let addStudent = (incoming, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%incoming%%%%%%%%%%%%%%%%%%%%%%%%");
+    console.log(incoming);
+    let student_id="";
+    let class_id="";
+    let teacher_id=incoming.teachers_id;
+    let query = 'INSERT INTO students (name, gender, personalContact, parentGuardianName, parentGuardianNumber, relationship, CCA) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id';
+    //let query = 'SELECT * FROM teachers';
+    let student_data = [incoming.name, incoming.gender, parseInt(incoming.studentContact), incoming.parentGuardianName, parseInt(incoming.parentGuardianContact), incoming.parentGuardianRelationship, incoming.cca] ;
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, student_data, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        console.log(error);
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+                //console.log(queryResult.rows);
+                studentId=parseInt( queryResult.rows[0].id ) ;
+
+                outgoingStatus.student_Id=queryResult.rows[0].id;
+                   let classquery = 'SELECT class_id FROM teacher_class WHERE teacher_id = ($1)';
+    //let query = 'SELECT * FROM teachers';
+    let teacher_check= [teacher_id] ;
+    //loginname= [ 'bobobobob'];
+
+    dbPoolInstance.query(classquery, teacher_check, (errorClass, queryClassResult) => {
+      if( errorClass ){
+
+        // invoke callback function with results after query has executed
+        console.log(errorClass);
+        callback(errorClass, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                classId=parseInt( queryClassResult.rows[0].class_id ) ;
+
+                console.log(classId);
+                //outgoingStatus.class=queryClassResult.rows[0];
+                console.log( studentId);
+                console.log(class_id);
+                let classStudentQuery = 'INSERT INTO student_class (student_id, class_id) VALUES ($1, $2)';
+        let newInsertData = [studentId, classId];
+
+    dbPoolInstance.query(classStudentQuery, newInsertData, (errorClass, queryClassResult) => {
+      if( errorClass ){
+
+        // invoke callback function with results after query has executed
+        console.log(errorClass);
+        callback(errorClass, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+
+
+
+                //outgoingStatus.class=queryClassResult.rows[0];
+                callback(null, outgoingStatus);
+
+
+
+
+
+      }
+    });
+
+
+
+
+
+      }
+    });
+
+
+
+
+
+      }
+    });
+  };
+
   return {
     optionClassForm: optionClassForm,
 
     viewStudent:viewStudent,
+    addStudent: addStudent,
   };
 };
