@@ -29,7 +29,7 @@ module.exports = (db) => {
                 response.cookie('loginSession', loginSession)
                 response.cookie('userId', userId);
                 response.cookie('userName', userName);
-                response.send(returningResult);
+                response.redirect('/home/');
                 return;
         }
         else{
@@ -42,6 +42,19 @@ module.exports = (db) => {
       });
   };
 
+  let homeControllerCallback = (request, response) => {
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
+    let data = {};
+    data.username = request.cookies['userName'];
+    //response.send('home Sweet Home')
+    response.render('home/home', data);
+
+  };
+
   /**
    * ===========================================
    * Export controller functions as a module
@@ -50,6 +63,7 @@ module.exports = (db) => {
   return {
     login: loginControllerCallback,
     process: processLogInControllerCallback,
+    home: homeControllerCallback,
   };
 
 }
