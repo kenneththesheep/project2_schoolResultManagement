@@ -33,9 +33,9 @@ if( process.env.DATABASE_URL ){
 
 }else{
   configs = {
-    user: 'akira',
+    user: 'kenneththesheep',
     host: '127.0.0.1',
-    database: 'testdb',
+    database: 'result_management',
     port: 5432
   };
 }
@@ -67,6 +67,10 @@ const allPokemonModelsFunction = require('./models/pokemon');
 const pokemonModelsObject = allPokemonModelsFunction( pool );
 
 
+const loginModelsFunction = require('./models/login');
+
+const loginModelsObject = loginModelsFunction( pool );
+
 
 /*
  * ===================================================
@@ -95,5 +99,6 @@ module.exports = {
    */
 
   // users: userModelsObject,
-  pokemon: pokemonModelsObject
+  pokemon: pokemonModelsObject,
+  login:loginModelsObject
 };
