@@ -18,7 +18,7 @@ class home extends React.Component {
             <div class={"row align-bottom mb-5"}>
             <div class={"col-4 mt-5 border"}>
             <h3  class={"mt-3"}>Form class matters</h3>
-            <p class ={"mt-5"}><a href={"#"}>View Form class</a></p>
+            <p class ={"mt-5"}><a href={"/formclass/"}>View Form class</a></p>
             </div>
             <div class={"col-4 mt-5 border"}>
             <h3  class={"mt-3"}>Conduct Grading and HDP</h3>
