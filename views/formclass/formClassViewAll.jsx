@@ -5,28 +5,39 @@ class home extends React.Component {
 
       const student=this.props.students.map(student=>
         {
-
-            return <div class= {"row"}>
+            const editStudentUrl = '/formclass/' + student.id +"?_method=put";
+            const deleteStudentUrl = '/formclass' + student.id+ "?_method=delete";
+            return <div class= {"row mx-auto"}>
             <div class = {"col-2 border"}>
-                <p>{student.name}</p>
+                <p class={"mt-2"}>{student.name}</p>
             </div>
            <div class = {"col-1 border"}>
-                <p>{student.gender}</p>
-            </div>
-            <div class = {"col-2 border"}>
-                <p>{student.personalcontact}</p>
-            </div>
-            <div class = {"col-2 border"}>
-                <p>{student.parentguardianname}</p>
-            </div>
-            <div class = {"col-2 border"}>
-                <p>{student.parentguardiannumber}</p>
+                <p class={"mt-2"}>{student.gender}</p>
             </div>
             <div class = {"col-1 border"}>
-                <p>{student.relationship}</p>
+                <p class={"mt-2"}>{student.personalcontact}</p>
             </div>
             <div class = {"col-1 border"}>
-                <p>{student.cca}</p>
+                <p class={"mt-2"}>{student.parentguardianname}</p>
+            </div>
+            <div class = {"col-2 border"}>
+                <p class={"mt-2"}>{student.parentguardiannumber}</p>
+            </div>
+            <div class = {"col-1 border"}>
+                <p class={"mt-2"}>{student.relationship}</p>
+            </div>
+            <div class = {"col-1 border"}>
+                <p class={"mt-2"}>{student.cca}</p>
+            </div>
+            <div class = {"col-1 border "}>
+                <form  class={"mt-2"} action={editStudentUrl} method="POST">
+                        <input type="submit" value="Edit"/>
+                </form>
+            </div>
+            <div class = {"col-1 border "}>
+                <form  class={"mt-2"} action={deleteStudentUrl} method="POST">
+                        <input type="submit" value="Delete"/>
+                </form>
             </div>
             </div>
 
@@ -38,17 +49,18 @@ class home extends React.Component {
                     <link rel={"stylesheet"} href={"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"} integrity={"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"} crossorigin={"anonymous"}></link>
                         <link rel={"stylesheet"} href={"../style/style.css"}></link>
         <body>
-          <div class={"container mt-3 horizontal-scroll-wrapper squares detailed-box"} style= {{width:"200%"}}>
-            <div class={"row align-bottom mb-5"}>
+        <div class={"container mt-3 "}>
+        <div class={"row align-bottom mb-5"}>
             <div class={"col-12 mt-5 text-center"}>
             <h1  class={"mt-3"}>Class {this.props.class[0].classname} Details</h1>
             </div>
             </div>
-            <div class= {"row"}>
-            <div class = {"col-10"}>
+        </div>
+          <div class={"container mt-3 horizontal-scroll-wrapper squares detailed-box border"} >
+
+
                 {student}
-            </div>
-            </div>
+
 
 
 
