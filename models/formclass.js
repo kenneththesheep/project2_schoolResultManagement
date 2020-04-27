@@ -91,6 +91,40 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+
+ let updateStudent = (incoming, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+
+    let query = 'UPDATE students SET name = ($1), gender =($2), personalContact =($3), parentGuardianName =($4), parentGuardianNumber = ($5), relationship = ($6), CCA = ($7) WHERE id = ($8)';
+    let student_data = [incoming.student.name, incoming.student.gender, parseInt(incoming.student.studentContact), incoming.student.parentGuardianName, parseInt(incoming.student.parentGuardianContact), incoming.student.parentGuardianRelationship, incoming.student.cca, parseInt(incoming.id)] ;
+
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, student_data, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+                console.log(queryResult.rows);
+
+                outgoingStatus.student=queryResult.rows[0];
+                callback(null, outgoingStatus);
+
+
+
+
+
+      }
+    });
+  };
+
+
+
+
+
   let addStudent = (incoming, callback) => {
     console.log("%%%%%%%%%%%%%%%%%%%%%%incoming%%%%%%%%%%%%%%%%%%%%%%%%");
     console.log(incoming);
@@ -180,10 +214,58 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+ let deleteStudent = (remove_id, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%DELETING%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    console.log( remove_id)
+    let query = 'DELETE FROM students WHERE id= ($1)';
+    //let query = 'SELECT * FROM teachers';
+    let idRemove = [remove_id.id];
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, idRemove, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                    let querySecondRemoval = 'DELETE FROM student_class WHERE student_id= ($1)';
+
+    dbPoolInstance.query(querySecondRemoval, idRemove, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                callback(null, outgoingStatus);
+
+
+
+
+
+      }
+    });
+
+
+
+
+
+      }
+    });
+  };
+
   return {
     optionClassForm: optionClassForm,
-
+    updateStudent:updateStudent,
     viewStudent:viewStudent,
     addStudent: addStudent,
+    deleteStudent: deleteStudent,
   };
 };

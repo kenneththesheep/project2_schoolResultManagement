@@ -112,6 +112,58 @@ let addFormStudentFormClassControllerCallback = (request, response) => {
 
   };
 
+let deleteStudentClassControllerCallback = (request, response) => {
+    console.log("I can process delete");
+    let data = {};
+    data.id = parseInt(request.params.id);
+    //response.send(data);
+
+       db.formClass.deleteStudent(data,(error, returningResult) => {
+        const url = '/formclass/all';
+        //response.send(returningResult);
+        response.redirect(url);
+        //response.render('formclass/individual_student', returningResult);
+      });
+
+  };
+
+  let editFormStudentClassControllerCallback = (request, response) => {
+    console.log("I can show form for edit");
+    //response.send("I can show wdit form")
+    let data = {};
+    data.id = parseInt(request.params.id);
+    //response.send(data);
+
+       db.formClass.viewStudent(data,(error, returningResult) => {
+        const url = '/formclass/all';
+        data.student= returningResult
+        //response.send(data);
+        response.render('formclass/editStudentForm', data)
+        //response.redirect(url);
+        //response.render('formclass/individual_student', returningResult);
+      });
+
+  };
+
+  let editStudentClassControllerCallback = (request, response) => {
+    //console.log("I can process edit");
+    //response.send("I can process edit");
+    let data = {};
+    data.id = parseInt(request.params.id);
+    data.student= request.body
+    //response.send(data);
+
+    //response.send(data);
+
+      db.formClass.updateStudent(data,(error, returningResult) => {
+        const url = '/formclass/student/'+data.id;
+        //response.send(returningResult);
+        response.redirect(url);
+        //response.render('formclass/individual_student', returningResult);
+      });
+
+  };
+
   let homeControllerCallback = (request, response) => {
     var loginSession = request.cookies['loginSession'];
         if(loginSession === undefined){
@@ -137,6 +189,9 @@ let addFormStudentFormClassControllerCallback = (request, response) => {
     individual: individualFormClassControllerCallback,
     addFormStudent: addFormStudentFormClassControllerCallback,
     add:addStudentClassControllerCallback,
+    editForm:editFormStudentClassControllerCallback,
+    delete:deleteStudentClassControllerCallback,
+    edit:editStudentClassControllerCallback,
     home: homeControllerCallback,
   };
 

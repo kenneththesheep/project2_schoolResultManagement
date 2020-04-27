@@ -5,8 +5,8 @@ class home extends React.Component {
 
       const student=this.props.students.map(student=>
         {
-            const editStudentUrl = '/formclass/student/' + student.id +"/edit/";
-            const deleteStudentUrl = '/formclass/student/' + student.id+ "?_method=delete";
+            const editStudentUrl = '/formclass/student/' + student.student_id +"/edit/";
+            const deleteStudentUrl = '/formclass/student/' + student.student_id+ "?_method=delete";
             return <div class= {"row mx-auto"}>
             <div class = {"col-2 border"}>
                 <p class={"mt-2"}>{student.name}</p>

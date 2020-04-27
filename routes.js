@@ -29,6 +29,8 @@ module.exports = (app, allModels) => {
    app.get('/formclass/student/add', formClassControllerCallbacks.addFormStudent);
    app.post('/formclass/student', formClassControllerCallbacks.add);
   app.get('/formclass/student/:id', formClassControllerCallbacks.individual);
-
+    app.get('/formclass/student/:id/edit', formClassControllerCallbacks.editForm);
+  app.delete('/formclass/student/:id', formClassControllerCallbacks.delete)
+    app.put('/formclass/student/:id', formClassControllerCallbacks.edit);
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };
