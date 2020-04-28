@@ -12,23 +12,28 @@ class home extends React.Component {
           <div class={"container mt-3 tweetBox"}>
             <div class={"row align-bottom mb-5"}>
             <div class={"col-12 mt-5 text-center"}>
-            <h1  class={"mt-3"}>Welcome {this.props.username}</h1>
+            <h1  class={"mt-3"}>Welcome</h1>
             </div>
             </div>
             <div class={"row align-bottom mb-5"}>
-            <div class={"col-4 mt-5 border"}>
-            <h3  class={"mt-3"}>Form class matters</h3>
-            <p class ={"mt-5"}><a href={"/formclass/"}>Form class matters</a></p>
+            <div class={"col-3 mt-5 border"}>
+            <h3  class={"mt-3"}>Assign subject to students</h3>
+            <p class ={"mt-5"}><a href={"#"}>Assign</a></p>
             </div>
-            <div class={"col-4 mt-5 border"}>
-            <h3  class={"mt-3"}>Conduct Grading and HDP</h3>
-            <p class ={"mt-5 mb-5 home-action-row"}><a href={"/conduct/"}>Conduct Grading and remarks</a></p>
+            <div class={"col-3 mt-5 border"}>
+            <h3  class={"mt-3"}>Enter Results By Subjects</h3>
+            <p class ={"mt-5 mb-5 home-action-row"}><a href={"#"}>To be replaced by a drop down list</a></p>
 
             </div>
 
-            <div class={"col-4 mt-5 border"}>
-            <h3  class={"mt-3"}>Result Management</h3>
-            <p class ={"mt-5"}><a href={"/results/"}>Result Management</a></p>
+            <div class={"col-3 mt-5 border"}>
+            <h3  class={"mt-3"}>Edit Result</h3>
+            <p class ={"mt-5"}><a href={"#"}>Edit Results</a></p>
+            </div>
+
+            <div class={"col-3 mt-5 border"}>
+            <h3  class={"mt-3"}>View/Print Result</h3>
+            <p class ={"mt-5"}><a href={"#"}>View/ Print Results</a></p>
             </div>
             </div>
 

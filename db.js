@@ -78,6 +78,11 @@ const formClassModelsObject = formClassModelsFunction( pool );
 const conductModelsFunction = require('./models/conduct');
 
 const conductModelsObject = conductModelsFunction( pool );
+
+
+const resultsModelsFunction = require('./models/results');
+
+const resultModelsObject = resultsModelsFunction( pool );
 /*
  * ===================================================
  * ===================================================
@@ -109,4 +114,5 @@ module.exports = {
   login:loginModelsObject,
   formClass: formClassModelsObject,
   conduct: conductModelsObject,
+  result: resultModelsObject,
 };

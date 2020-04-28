@@ -21,6 +21,7 @@ module.exports = (app, allModels) => {
 
   const conductControllerCallbacks = require('./controllers/conduct')(allModels);
 
+  const resultsControllerCallbacks = require('./controllers/results')(allModels);
 
 
 
@@ -41,7 +42,7 @@ module.exports = (app, allModels) => {
   app.delete('/formclass/student/:id', formClassControllerCallbacks.delete)
     app.put('/formclass/student/:id', formClassControllerCallbacks.edit);
 
-
+//////////calllbacks relating to conduct grading
     app.get('/conduct',conductControllerCallbacks.conductLand);
         app.get('/conduct/view',conductControllerCallbacks.conductView);
     app.get('/conduct/select',conductControllerCallbacks.conductSelect);
@@ -51,5 +52,9 @@ module.exports = (app, allModels) => {
     app.post('/conduct/', conductControllerCallbacks.processForm);
     app.get('/conduct/:id/edit', conductControllerCallbacks.editSingle);
     app.put('/conduct/:id',conductControllerCallbacks.editSingleProcess);
+
+//////////callbacks relating to result
+    app.get('/results', resultsControllerCallbacks.resultHome);
+
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };
