@@ -3,12 +3,7 @@ var React = require("react");
 class home extends React.Component {
   render() {
 
-      const student=this.props.students.map(student=>
-        {
 
-            return <option value={student.id}>{student.name}</option>
-
-        });
 
     return (
       <html>
@@ -17,7 +12,12 @@ class home extends React.Component {
                         <link rel={"stylesheet"} href={"/style/style.css"}></link>
         <body>
           <div class={"container mt-3 "}>
-            <div class={"row align-bottom mb-5"}>
+            <div class={"row"}>
+                <div class={"col-12"}>
+                    <h1>Wait</h1>
+                </div>
+            </div>
+{/*            <div class={"row align-bottom mb-5"}>
             <div class={"col-12 mt-5 text-center"}>
             <h1  class={"mt-3"}>Welcome to {this.props.class[0].classname} matters</h1>
             </div>
@@ -51,10 +51,11 @@ class home extends React.Component {
             <h4  class={"mt-3"}>Add New Student</h4>
             <p class ={"mt-5"}><a href={"/formclass/student/add"}>Add New Student</a></p>
             </div>
-            </div>
+            </div>*/}
 
 
           </div>
+          <script src={"/script/conductScript.js"}></script>
         </body>
       </html>
     );
