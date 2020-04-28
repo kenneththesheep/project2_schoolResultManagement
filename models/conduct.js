@@ -143,6 +143,148 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+
+ let editSingle = (conductlogin, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+
+    let query = 'SELECT *  FROM conduct WHERE id= ($1)';
+    //let query = 'SELECT * FROM teachers';
+    let conduct_id = [conductlogin.conductId];
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, conduct_id, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+    outgoingStatus.conduct = queryResult.rows[0];
+    //console.log(outgoingStatus.class.class_id);
+                    let studentQuery = 'SELECT * FROM students INNER JOIN student_conduct ON (students.id = student_conduct.student_id) WHERE conduct_id= ($1)';
+
+    //loginname= [ 'bobobobob'];
+
+    dbPoolInstance.query(studentQuery, conduct_id, (error, queryStudentResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        outgoingStatus.students=queryStudentResult.rows;
+        console.log(outgoingStatus);
+        callback(null, outgoingStatus);
+
+      }
+    });
+
+      }
+    });
+  };
+
+ let editSingleProcess = (conductlogin, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+
+    let query = 'UPDATE conduct SET conductgrade = ($2), remark = ($3) WHERE id= ($1)';
+    //let query = 'SELECT * FROM teachers';
+    let conduct_id = [conductlogin.conductId, conductlogin.conductGrade, conductlogin.remarks];
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, conduct_id, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+    outgoingStatus.conduct = queryResult.rows[0];
+    callback(null, outgoingStatus);
+    //console.log(outgoingStatus.class.class_id);
+
+
+      }
+    });
+  };
+
+
+
+
+let viewForm = (userlogin, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+    console.log(userlogin);
+    let query = 'SELECT classname, class_id FROM class INNER JOIN teacher_class ON (class.id = teacher_class.class_id) WHERE teacher_id= ($1)';
+    //let query = 'SELECT * FROM teachers';
+    let teacher_id = [userlogin.teacher_id];
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, teacher_id, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+    outgoingStatus.class = queryResult.rows[0];
+    //console.log(outgoingStatus.class.class_id);
+                    let studentQuery = 'SELECT * FROM students INNER JOIN student_class ON (students.id = student_class.student_id) WHERE class_id= ($1)';
+        let class_id = [parseInt(outgoingStatus.class.class_id)]
+    //loginname= [ 'bobobobob'];
+
+    dbPoolInstance.query(studentQuery, class_id, (error, queryStudentResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        outgoingStatus.students=queryStudentResult.rows;
+        console.log(outgoingStatus);
+
+    //console.log(outgoingStatus.class.class_id);
+                    let studentConductQuery = 'SELECT * FROM conduct INNER JOIN student_conduct ON (conduct.id = student_conduct.conduct_id) WHERE ';
+                    let join_array=[];
+        for (let count = 0; count< outgoingStatus.students.length; count ++)
+        {
+            studentConductQuery += `student_id = ($${count+1}) OR `;
+            join_array.push ( outgoingStatus.students[count].student_id);
+        }
+        studentConductQuery = studentConductQuery.substring(0, studentConductQuery.length-3);
+        console.log(studentConductQuery);
+
+    dbPoolInstance.query(studentConductQuery, join_array, (errorConduct, queryStudentConductResult) => {
+      if( errorConduct ){
+        console.log(errorConduct);
+
+        // invoke callback function with results after query has executed
+        callback(errorConduct, null);
+
+      }else{
+        outgoingStatus.conduct=queryStudentConductResult.rows;
+        console.log(outgoingStatus);
+        callback(null, outgoingStatus);
+
+      }
+    });
+
+      }
+    });
+
+      }
+    });
+  };
+
+
+
 let processForm = (dataEntry, callback) => {
     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     let outgoingStatus={};
@@ -231,5 +373,8 @@ let processForm = (dataEntry, callback) => {
     initialCheckConduct:initialCheckConduct,
     addForm: addForm,
     processForm: processForm,
+    viewForm: viewForm,
+    editSingle: editSingle,
+    editSingleProcess: editSingleProcess
   };
 };

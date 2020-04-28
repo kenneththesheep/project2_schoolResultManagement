@@ -69,31 +69,64 @@ let addForm = (request, response) => {
 
         db.conduct.processForm(data,(error, returningResult) => {
             response.redirect('/conduct')
+
+      });
+  };
+
+
+ let conductView = (request, response) => {
+    //response.send("View Conduct");
+    //console.log(request);
+    let data = {};
+    data. teacher_id = request.cookies.userId;
+
+    console.log(data);
+    //response.send(data);
+
+        db.conduct.viewForm(data,(error, returningResult) => {
+            //response.redirect('/conduct')
         //response.send(returningResult);
+        response.render('conduct/viewConduct.jsx', returningResult);
         //console.log(returningResult);
         //response.send(returningResult)
         //response.render('conduct/addConductForm', returningResult);
       });
   };
 
+let editSingle = (request, response) => {
+    //response.send("Edit single");
+    console.log(request.params);
+    let data = {};
+    data.conductId = parseInt (request.params.id);
+    /*data. teacher_id = request.cookies.userId;
 
- let conductView = (request, response) => {
-    response.send("View Conduct");
-    //console.log(request);
-    /*let data = {};
-    data.classIndex = parseInt(request.body.formClassId);
-    data.conductGradeArray= request.body.conductGrade;
-    data.remarksArray = request.body.remarks;
-    console.log(data);
+    console.log(data);*/
     //response.send(data);
 
-        db.conduct.processForm(data,(error, returningResult) => {
-            response.redirect('/conduct')
+        db.conduct.editSingle(data,(error, returningResult) => {
+            //response.redirect('/conduct')
         //response.send(returningResult);
-        //console.log(returningResult);
-        //response.send(returningResult)
-        //response.render('conduct/addConductForm', returningResult);
-      });*/
+        response.render('conduct/editSingle.jsx', returningResult);
+
+      });
+  };
+
+let editSingleProcess = (request, response) => {
+
+    console.log(request.params);
+    let data = {};
+    data = request.body;
+    data.conductId = parseInt (request.params.id);
+        //response.send(data);
+    /*data. teacher_id = request.cookies.userId;
+
+    console.log(data);*/
+    //response.send(data);
+
+        db.conduct.editSingleProcess(data,(error, returningResult) => {
+            response.redirect('/conduct/view')
+
+      });
   };
 
   /**
@@ -107,6 +140,8 @@ let addForm = (request, response) => {
     addForm: addForm,
     processForm: processForm,
     conductView: conductView,
+    editSingle: editSingle,
+    editSingleProcess: editSingleProcess
 
   };
 

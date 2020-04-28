@@ -44,8 +44,11 @@ module.exports = (app, allModels) => {
 
     app.get('/conduct',conductControllerCallbacks.conductLand);
         app.get('/conduct/view',conductControllerCallbacks.conductView);
+    app.get('/conduct/select',conductControllerCallbacks.conductSelect);
     app.post('/conduct/initialCheck', conductControllerCallbacks.initialCheck);
     app.get('/conduct/add',conductControllerCallbacks.addForm);
     app.post('/conduct/', conductControllerCallbacks.processForm);
+    app.get('/conduct/:id/edit', conductControllerCallbacks.editSingle);
+    app.put('/conduct/:id',conductControllerCallbacks.editSingleProcess);
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };
