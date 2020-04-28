@@ -45,6 +45,7 @@ module.exports = (app, allModels) => {
     app.get('/conduct',conductControllerCallbacks.conductLand);
         app.get('/conduct/view',conductControllerCallbacks.conductView);
     app.get('/conduct/select',conductControllerCallbacks.conductSelect);
+    app.post('/conduct/student', conductControllerCallbacks.studentProcess);
     app.post('/conduct/initialCheck', conductControllerCallbacks.initialCheck);
     app.get('/conduct/add',conductControllerCallbacks.addForm);
     app.post('/conduct/', conductControllerCallbacks.processForm);

@@ -129,6 +129,41 @@ let editSingleProcess = (request, response) => {
       });
   };
 
+let conductSelect = (request, response) => {
+    let teacher_id = request.cookies.userId;
+    //response.send("Hilo World");
+    let data = {};
+
+    data.teacherId = parseInt (teacher_id);
+        //response.send(data);
+
+
+    console.log(data);
+    //response.send(data);
+
+        db.conduct.conductSelect(data,(error, returningResult) => {
+            //response.send(returningResult);
+            response.render('conduct/selectStudent', returningResult)
+            //response.redirect('/conduct/view')
+
+      });
+  };
+
+
+let studentProcess = (request, response) => {
+    //let teacher_id = request.cookies.userId;
+    //response.send(request.body);
+    let data = {};
+    data.student_id = parseInt(request.body.student);
+
+        db.conduct.studentProcess(data,(error, returningResult) => {
+            //response.send(returningResult);
+            response.redirect(returningResult);
+            //response.render('conduct/selectStudent', returningResult)
+            //response.redirect('/conduct/view')
+
+      });
+  };
   /**
    * ===========================================
    * Export controller functions as a module
@@ -141,7 +176,9 @@ let editSingleProcess = (request, response) => {
     processForm: processForm,
     conductView: conductView,
     editSingle: editSingle,
-    editSingleProcess: editSingleProcess
+    editSingleProcess: editSingleProcess,
+    conductSelect: conductSelect,
+    studentProcess: studentProcess
 
   };
 

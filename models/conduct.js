@@ -215,6 +215,53 @@ module.exports = (dbPoolInstance) => {
 
 
 
+ let conductSelect = (login, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+
+    let query = 'SELECT * FROM class INNER JOIN teacher_class ON (class.id = teacher_class.class_id) WHERE teacher_id = ($1)';
+    //let query = 'SELECT * FROM teachers';
+    let teacher_id = [login.teacherId];
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, teacher_id, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+    outgoingStatus.class = queryResult.rows[0];
+    let studentQuery = ' SELECT * FROM students INNER JOIN student_class ON (students.id = student_class.student_id) WHERE class_id = ($1)';
+    let studentArray = [outgoingStatus.class.class_id]
+        dbPoolInstance.query(studentQuery, studentArray, (error, queryStudentResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+    outgoingStatus.student = queryStudentResult.rows;
+    callback(null, outgoingStatus);
+    //console.log(outgoingStatus.class.class_id);
+
+
+      }
+    });
+
+
+      }
+    });
+  };
+
+
+
+
 
 let viewForm = (userlogin, callback) => {
     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
@@ -367,7 +414,35 @@ let processForm = (dataEntry, callback) => {
     });
   };
 
+ let studentProcess = (login, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 
+    let query = 'SELECT conduct_id FROM conduct INNER JOIN student_conduct  ON (conduct.id = student_conduct.conduct_id) WHERE student_id = ($1)';
+    //let query = 'SELECT * FROM teachers';
+    let student_id = [login.student_id];
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, student_id, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        console.log(error);
+        callback(error, null);
+
+      }else{
+console.log("fkhdskjafhdkjshfkahfjksahfkjsahfjkashfdkjdshfkhas");
+        // invoke callback function with results after query has executed
+
+    outgoingStatus   = queryResult.rows[0];
+    const url = "/conduct/" + queryResult.rows[0].conduct_id + "/edit";
+    console.log(url);
+    callback(null,url);
+
+
+
+      }
+    });
+  };
 
   return {
     initialCheckConduct:initialCheckConduct,
@@ -375,6 +450,8 @@ let processForm = (dataEntry, callback) => {
     processForm: processForm,
     viewForm: viewForm,
     editSingle: editSingle,
-    editSingleProcess: editSingleProcess
+    editSingleProcess: editSingleProcess,
+    conductSelect: conductSelect,
+    studentProcess: studentProcess
   };
 };

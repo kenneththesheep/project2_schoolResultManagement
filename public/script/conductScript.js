@@ -149,7 +149,7 @@ var responseHandler = function() {
     bottomRightCol.appendChild(spanRightText);
 
     let linkRightText = document.createElement("a");
-    linkRightText.setAttribute("href", "#");
+    linkRightText.setAttribute("href", "/conduct/select");
     linkRightText.innerText = "Edit Conduct Grading and Remarks";
     bottomRightCol.appendChild(linkRightText);
 
