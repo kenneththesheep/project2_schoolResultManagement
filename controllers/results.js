@@ -201,7 +201,27 @@ module.exports = (db) => {
       });
   };
 
+         let viewAll = (request, response) => {
+    //response.send('Welcome to viewAll');
 
+
+    //console.log(request.body);
+
+    //response.render('result/resultLanding');
+
+        let data = {};
+
+        data.teacher_id=parseInt(request.cookies.userId);
+
+        console.log(data);
+       db.result.viewAll(data,(error, returningResult) => {
+        let returnData = {};
+        returnData.class = returningResult;
+        //response.send(returningResult);
+        //response.redirect('/results/viewResult');
+        response.render('result/viewResult', returnData);
+      });
+  };
 
   /**
    * ===========================================
@@ -220,6 +240,7 @@ module.exports = (db) => {
     keyResultForm:keyResultForm,
     editResultForm:editResultForm,
     keyResultProcess : keyResultProcess,
+    viewAll: viewAll,
     //keyResultProcess: keyResultProcess,
   };
 

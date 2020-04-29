@@ -72,6 +72,7 @@ app.get('/utility',utilityControllerCallbacks.allSubject);
     app.get("/results/add",resultsControllerCallbacks.keyResultForm);
     app.post("/results/add",resultsControllerCallbacks.keyResultProcess);
         app.get("/results/edit",resultsControllerCallbacks.editResultForm)
+    app.get("/results/view/all",resultsControllerCallbacks.viewAll)
 
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };

@@ -35,7 +35,7 @@ class home extends React.Component {
 
             <div class={"col-3 mt-5 border"}>
             <h3  class={"mt-3"}>View/Print Result</h3>
-            <p class ={"mt-5"}><a href={"#"}>View/ Print Results</a></p>
+            <p class ={"mt-5"}><a href={"/results/view/all"}>View/ Print Results</a></p>
             </div>
             </div>
 

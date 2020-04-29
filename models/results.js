@@ -365,6 +365,52 @@ console.log(query);
     });
   };
 
+let viewAll = (teacher, callback) => {
+    console.log("############View All###############");
+   console.log(teacher);
+    let outgoingStatus = {};
+    let teacher_array = [teacher.teacher_id];
+
+    console.log(teacher_array);
+    let query = 'SELECT class_id FROM teachers INNER JOIN teacher_class ON (teachers.id= teacher_class.teacher_id) WHERE teacher_id = ($1)'
+
+   dbPoolInstance.query(query, teacher_array, (error, queryResult) => {
+      if( error ){
+        console.log(error);
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                console.log(queryResult.rows[0]);
+
+                let classId = [queryResult.rows[0].class_id];
+            let combinedQuery = 'SELECT name, gender, classname, subjectname, sa1, sa2, overall FROM student_subject_result_class INNER JOIN class ON (class.id = student_subject_result_class.class_id) INNER JOIN subject ON (subject.id = student_subject_result_class.subject_id) INNER JOIN students ON (students.id = student_subject_result_class.student_id) INNER JOIN result ON (result.id = student_subject_result_class.result_id) WHERE class_id = ($1) ORDER BY gender, name, subjectname'
+
+
+                  dbPoolInstance.query(combinedQuery, classId, (errorCombine, queryCombineResult) => {
+      if( errorCombine ){
+        console.log(errorCombine);
+        // invoke callback function with results after query has executed
+        callback(errorCombine, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+                outgoingStatus= queryCombineResult.rows;
+                console.log (queryCombineResult.rows);
+                callback(null, outgoingStatus);
+
+      }
+    });
+
+      }
+    });
+  };
+
+
   return {
     findStudents:findStudents,
     checkSubjectNotTaken: checkSubjectNotTaken,
@@ -374,5 +420,6 @@ console.log(query);
     processRemoveSubject: processRemoveSubject,
     viewStudentFromFormClassWithSubject:viewStudentFromFormClassWithSubject,
     processMarkEntry: processMarkEntry,
+    viewAll: viewAll,
   };
 };
