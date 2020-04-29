@@ -2,14 +2,34 @@ var React = require("react");
 
 class home extends React.Component {
   render() {
+    console.log(this.props.activeStudents);
+    console.log(this.props.class_id);
 console.log(this.props.activeStudents.length)
-/*      const student=this.props.student.map((student, index)=>
+      const student=this.props.activeStudents.map((student, index)=>
         {
-            const editStudentUrl = '/conduct/student/' + student.student_id ;
 
-            return <option value = {student.student_id}>{student.name}</option>
 
-        });*/
+            return  <div class={"row"}>
+            <div class={"col-4"}>
+                <p> {student.name}</p>
+            </div>
+            <div class = {"col-4"}>
+                <input  class= "student_id" type="text" name="student_id" value = {student.student_id} style={{display:"none"}} ></input>
+
+                <input  id= "SA1" type="text" name="SA1" placeholder="Enter SA1" required
+                            oninvalid="this.setCustomValidity('Enter Valid SA1 Marks Here')"
+                            oninput="this.setCustomValidity('')" ></input>
+            </div>
+            <div class = {"col-4"}>
+                <input  class= "student_id" type="text" name="student_id" value = {student.student_id} style={{display:"none"}} ></input>
+
+                <input  id= "SA2" type="text" name="SA2" placeholder="Enter SA2" required
+                            oninvalid="this.setCustomValidity('Enter Valid SA2 Marks Here')"
+                            oninput="this.setCustomValidity('')" ></input>
+            </div>
+            </div>
+
+        });
 
     return (
       <html>
@@ -23,24 +43,29 @@ console.log(this.props.activeStudents.length)
             <h1  class={"mt-3"}>{this.props.activeStudents[0].subjectname}:Data Entry</h1>
             </div>
             </div>
-        </div>
-        <form  class={"mt-2"} action="/conduct/student" method="POST">
+        <div class={"row"}>
+            <div class={"col-4"}>
+                <h2> Name</h2>
+            </div>
+            <div class = {"col-4"}>
+                <h2>SA1 (45%)</h2>
+            </div>
+            <div class = {"col-4"}>
+                <h2>SA2 (55%) </h2>
+            </div>
+            </div>
+        <form  class={"mt-2"} action="/results/add" method="POST">
+        <input  class= "subject_id" type="text" name="subject_id" value = {this.props.activeStudents[0].subject_id} style={{display:"none"}} ></input>
 
-        <div class = {"row border pt-5"}>
-          <div class = {"col-12 text-center"}>
-          <select name = "student" size = "1">
-
-            </select>
-        </div>
-        </div>
-
+        <input  class= "class_id" type="text" name="class_id" value = {this.props.class_id} style={{display:"none"}} ></input>
+         {student}
           <div class = {"row border pt-5"}>
           <div class = {"col-12 text-center"}>
-            <input type="submit" value="Submit" style={{width:"25%"}}/>
+            <input type="submit" value="Submit" style={{width:"15%"}}/>
             </div>
             </div>
           </form>
-
+          </div>
         </body>
       </html>
     );

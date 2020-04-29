@@ -69,7 +69,8 @@ app.get('/utility',utilityControllerCallbacks.allSubject);
 
     app.post('/results/subject/add', resultsControllerCallbacks.processAddSubject);
     app.post('/results/subject/delete', resultsControllerCallbacks.processRemoveSubject);
-    app.get("/results/add",resultsControllerCallbacks.keyResultForm)
+    app.get("/results/add",resultsControllerCallbacks.keyResultForm);
+    app.post("/results/add",resultsControllerCallbacks.keyResultProcess);
         app.get("/results/edit",resultsControllerCallbacks.editResultForm)
 
   //app.get('/pokemons/:id', pokemons.getPokemon);

@@ -145,9 +145,9 @@ module.exports = (db) => {
 
         console.log(data);
        db.result.viewStudentFromFormClassWithSubject(data,(error, returningResult) => {
-        response.send(returningResult);
+        //response.send(returningResult);
         //response.redirect('/results/viewSubject');
-        //response.render('result/resultEntry', returningResult);
+        response.render('result/resultEntry', returningResult);
       });
   };
 
@@ -170,6 +170,39 @@ module.exports = (db) => {
         //response.render('result/addSubject', returningResult);
       });*/
   };
+
+
+
+         let keyResultProcess = (request, response) => {
+    //response.send(request.body);
+    //response.send(request.body);
+    console.log(request.body);
+
+
+        let data = {};
+        data.subject_id = parseInt(request.body.subject_id);
+        data.class_id = parseInt(request.body.class_id);
+        const uniqueSet = new Set(request.body.student_id);
+        data.student_id = [... uniqueSet];
+        data.SA1 = request.body.SA1;
+
+        data.SA2 = request.body.SA2
+        for(let count =0; count < data.SA1.length; count++)
+        {
+            data.student_id[count]=parseInt (data.student_id[count]);
+            data.SA1[count] = parseInt(data.SA1[count]);
+            data.SA2[count] = parseInt(data.SA2[count]);
+        }
+        console.log(data);
+       db.result.processMarkEntry(data,(error, returningResult) => {
+        //response.send(returningResult);
+        response.redirect('/results/');
+        //response.render('result/resultEntry', returningResult);
+      });
+  };
+
+
+
   /**
    * ===========================================
    * Export controller functions as a module
@@ -185,7 +218,9 @@ module.exports = (db) => {
     deleteSubject: deleteSubject,
     processRemoveSubject: processRemoveSubject,
     keyResultForm:keyResultForm,
-    editResultForm:editResultForm
+    editResultForm:editResultForm,
+    keyResultProcess : keyResultProcess,
+    //keyResultProcess: keyResultProcess,
   };
 
 }
