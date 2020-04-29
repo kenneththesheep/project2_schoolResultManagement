@@ -128,10 +128,46 @@ let checkSubjectTaken = (student, callback) => {
     });
   };
 
+let processAddSubject = (student, callback) => {
+    console.log("###########################");
+   console.log(student);
+    let outgoingStatus = {};
+    let query = 'INSERT INTO student_subject (student_id, subject_id) VALUES ';
+    //let query = 'SELECT * FROM teachers';
+
+    let student_subject_array = [parseInt(student.id)];
+    for( let count =0; count < student.subject_id.length; count ++)
+    {
+        console.log(student.subject_id[count]);
+        query += `($1, $${count+2}), `;
+        student_subject_array.push(parseInt(student.subject_id[count]));
+    }
+    query = query.substring(0, query.length - 2);
+    console.log(student_subject_array);
+    console.log(query);
+    dbPoolInstance.query(query, student_subject_array, (error, queryResult) => {
+      if( error ){
+        console.log(error);
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                console.log("dfljflkajlfdjalfdalfjlafj");
+                outgoingStatus= queryResult.rows;
+                callback(null, outgoingStatus);
+
+      }
+    });
+  };
+
   return {
     findStudents:findStudents,
     checkSubjectNotTaken: checkSubjectNotTaken,
     checkSubjectTaken:checkSubjectTaken,
     checkSubjectTaken: checkSubjectTaken,
+    processAddSubject: processAddSubject,
   };
 };

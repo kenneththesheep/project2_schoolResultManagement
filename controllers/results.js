@@ -74,19 +74,28 @@ module.exports = (db) => {
 
 
      let processAddSubject = (request, response) => {
-    response.send('Welcome to add subject page process');
-    console.log(request.body);
+    //response.send('Welcome to add subject page process');
+    //console.log(request.body);
 
     //response.render('result/resultLanding');
 
-/*        let data = {};
+        let data = {};
         data.id = parseInt(request.body.student_id)
+        if(typeof request.body.subject_id === "string")
+        {
+            console.log("single object");
+            data.subject_id =[request.body.subject_id]
+        }
+        else if (typeof request.body.subject_id === "object"){
+            console.log("Array");
+            data.subject_id = request.body.subject_id;
+        }
 
-
-        db.result.checkSubjectTaken(data,(error, returningResult) => {
-        response.send(returningResult);
+        db.result.processAddSubject(data,(error, returningResult) => {
+        //response.send(returningResult);
+        response.redirect('/results/viewSubject');
         //response.render('result/addSubject', returningResult);
-      });*/
+      });
   };
   /**
    * ===========================================
