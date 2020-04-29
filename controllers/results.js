@@ -70,6 +70,24 @@ module.exports = (db) => {
         //response.render('result/addSubject', returningResult);
       });
   };
+
+
+
+     let processAddSubject = (request, response) => {
+    response.send('Welcome to add subject page process');
+    console.log(request.body);
+
+    //response.render('result/resultLanding');
+
+/*        let data = {};
+        data.id = parseInt(request.body.student_id)
+
+
+        db.result.checkSubjectTaken(data,(error, returningResult) => {
+        response.send(returningResult);
+        //response.render('result/addSubject', returningResult);
+      });*/
+  };
   /**
    * ===========================================
    * Export controller functions as a module
@@ -81,6 +99,7 @@ module.exports = (db) => {
     addSubject: addSubject,
     checkSubjectNotTaken: checkSubjectNotTaken,
     checkSubjectTaken:checkSubjectTaken,
+    processAddSubject:processAddSubject,
   };
 
 }

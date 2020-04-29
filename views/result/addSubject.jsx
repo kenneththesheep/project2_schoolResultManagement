@@ -24,15 +24,16 @@ class home extends React.Component {
             </div>
             </div>
         </div>
-        <form  class={"mt-2"} action="/conduct/student" method="POST">
+        <form  class={"mt-2"} action="/results/subject/add" method="POST">
 
         <div class = {"row border pt-5"}>
           <div class = {"col-6 text-center"}>
-          <select name = "student" size = "1" id = {"select"}>
+          <select name = "student_id" size = "1" id = {"select"}>
                 {student}
             </select>
         </div>
-        <div class = {"col-6 text-center"} id={"subject"}>
+        <div class = {"col-6 text-left"} id={"subject"}>
+
 
         </div>
         </div>

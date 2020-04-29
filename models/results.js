@@ -124,12 +124,6 @@ let checkSubjectTaken = (student, callback) => {
                 outgoingStatus= queryResult.rows;
                 callback(null, outgoingStatus);
 
-
-
-
-
-
-
       }
     });
   };

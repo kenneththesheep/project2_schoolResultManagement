@@ -58,7 +58,9 @@ module.exports = (app, allModels) => {
     app.get('/results/viewSubject', resultsControllerCallbacks.viewSubject);
     app.get('/results/addSubject', resultsControllerCallbacks.addSubject);
     app.post('/results/checkSubjectTaken', resultsControllerCallbacks.checkSubjectTaken);
-        app.post('/results/checkSubjectNotTaken', resultsControllerCallbacks.checkSubjectNotTaken);
+    app.post('/results/checkSubjectNotTaken', resultsControllerCallbacks.checkSubjectNotTaken);
+
+    app.post('/results/subject/add', resultsControllerCallbacks.processAddSubject);
 
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };

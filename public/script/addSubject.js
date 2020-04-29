@@ -18,6 +18,29 @@ function selectName(event){
         console.log(subject);
         console.log(subject.length);
         let subjectEntryBox = document.getElementById("subject");
+        subjectEntryBox.innerHTML = "";
+        let header = document.createElement('h3');
+        header.innerText = "Select Subjects to add"
+        subjectEntryBox.appendChild(header);
+        for( let subjectCount = 0; subjectCount < subject.length; subjectCount ++)
+        {
+            console.log (subject [ subjectCount ]);
+            let label = document.createElement("label");
+            label.innerText = "        " + subject [ subjectCount] .subjectname + "        ";
+            let space = document.createElement("span");
+            space.setAttribute("class", "mr-1");
+            let inputBox = document.createElement("input");
+            inputBox.type= "checkbox";
+            inputBox.setAttribute = ("class", "ml-3");
+            inputBox.name = "subject_id";
+            inputBox.value = subject [subjectCount] .id;
+            subjectEntryBox.appendChild(inputBox);
+            subjectEntryBox.appendChild(space);
+            subjectEntryBox.appendChild(label);
+            let lineBreak = document.createElement ( "br");
+            subjectEntryBox.appendChild(lineBreak);
+
+        }
         ////// Add the select box here
     }
     // listen for the request response
