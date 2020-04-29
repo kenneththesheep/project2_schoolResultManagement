@@ -40,6 +40,20 @@ module.exports = (db) => {
       });
   };
 
+  let deleteSubject = (request, response) => {
+    //response.send('Welcome to delete subject page');
+    //response.render('result/resultLanding');
+
+        let data = {};
+        data.id = request.cookies['userId'];
+
+
+        db.result.findStudents(data,(error, returningResult) => {
+        //response.send(returningResult);
+        response.render('result/deleteSubject', returningResult);
+      });
+  };
+
    let checkSubjectNotTaken = (request, response) => {
     //response.send('Welcome to add subject page');
     console.log(request.body);
@@ -97,6 +111,65 @@ module.exports = (db) => {
         //response.render('result/addSubject', returningResult);
       });
   };
+
+       let processRemoveSubject = (request, response) => {
+    //response.send('Welcome to remove subject page process');
+    console.log(request.body);
+
+    //response.render('result/resultLanding');
+
+        let data = {};
+        data.id = parseInt(request.body.student_id)
+            data.subject_id = parseInt(request.body.subject_id);
+
+        console.log(data);
+       db.result.processRemoveSubject(data,(error, returningResult) => {
+        //response.send(returningResult);
+        response.redirect('/results/viewSubject');
+        //response.render('result/addSubject', returningResult);
+      });
+  };
+
+         let keyResultForm = (request, response) => {
+    //response.send('Welcome to Key Result');
+    //response.send(request.body);
+    console.log(request.query);
+
+    //console.log(request.body);
+
+    //response.render('result/resultLanding');
+
+        let data = {};
+        data.subject_id=parseInt(request.query.subject_id);
+        data.teacher_id=parseInt(request.cookies.userId);
+
+        console.log(data);
+       db.result.viewStudentFromFormClassWithSubject(data,(error, returningResult) => {
+        response.send(returningResult);
+        //response.redirect('/results/viewSubject');
+        //response.render('result/addSubject', returningResult);
+      });
+  };
+
+
+           let editResultForm = (request, response) => {
+    response.send('Welcome to Edit Result');
+        console.log(request.query);
+    //console.log(request.body);
+
+    //response.render('result/resultLanding');
+
+ /*       let data = {};
+        data.id = parseInt(request.body.student_id)
+            data.subject_id = parseInt(request.body.subject_id);
+
+        console.log(data);*/
+/*       db.result.processRemoveSubject(data,(error, returningResult) => {
+        //response.send(returningResult);
+        response.redirect('/results/viewSubject');
+        //response.render('result/addSubject', returningResult);
+      });*/
+  };
   /**
    * ===========================================
    * Export controller functions as a module
@@ -109,6 +182,10 @@ module.exports = (db) => {
     checkSubjectNotTaken: checkSubjectNotTaken,
     checkSubjectTaken:checkSubjectTaken,
     processAddSubject:processAddSubject,
+    deleteSubject: deleteSubject,
+    processRemoveSubject: processRemoveSubject,
+    keyResultForm:keyResultForm,
+    editResultForm:editResultForm
   };
 
 }

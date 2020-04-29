@@ -83,6 +83,11 @@ const conductModelsObject = conductModelsFunction( pool );
 const resultsModelsFunction = require('./models/results');
 
 const resultModelsObject = resultsModelsFunction( pool );
+
+
+const utilityModelsFunction = require('./models/utility');
+
+const utilityModelsObject = utilityModelsFunction( pool );
 /*
  * ===================================================
  * ===================================================
@@ -115,4 +120,5 @@ module.exports = {
   formClass: formClassModelsObject,
   conduct: conductModelsObject,
   result: resultModelsObject,
+  utility: utilityModelsObject,
 };

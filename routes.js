@@ -23,6 +23,12 @@ module.exports = (app, allModels) => {
 
   const resultsControllerCallbacks = require('./controllers/results')(allModels);
 
+ const utilityControllerCallbacks = require('./controllers/utility')(allModels);
+
+
+////////////
+app.get('/utility',utilityControllerCallbacks.allSubject);
+
 
 
 ///////callbacks relating to login
@@ -57,10 +63,14 @@ module.exports = (app, allModels) => {
     app.get('/results', resultsControllerCallbacks.resultHome);
     app.get('/results/viewSubject', resultsControllerCallbacks.viewSubject);
     app.get('/results/addSubject', resultsControllerCallbacks.addSubject);
+    app.get('/results/removeSubject', resultsControllerCallbacks.deleteSubject);
     app.post('/results/checkSubjectTaken', resultsControllerCallbacks.checkSubjectTaken);
     app.post('/results/checkSubjectNotTaken', resultsControllerCallbacks.checkSubjectNotTaken);
 
     app.post('/results/subject/add', resultsControllerCallbacks.processAddSubject);
+    app.post('/results/subject/delete', resultsControllerCallbacks.processRemoveSubject);
+    app.get("/results/add",resultsControllerCallbacks.keyResultForm)
+        app.get("/results/edit",resultsControllerCallbacks.editResultForm)
 
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };

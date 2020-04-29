@@ -20,17 +20,17 @@ class home extends React.Component {
             <h3  class={"mt-3"}>View/ Assign/ Remove subject to students</h3>
             <p class ={"mt-5"}><a href={"/results/viewSubject"}>View</a></p>
             <p class ={"mt-5"}><a href={"/results/addSubject"}>Assign</a></p>
-            <p class ={"mt-5"}><a href={"#"}>Remove</a></p>
+            <p class ={"mt-5"}><a href={"/results/removeSubject"}>Remove</a></p>
             </div>
-            <div class={"col-3 mt-5 border"}>
+            <div class={"col-3 mt-5 border"} id={"addResult"}>
             <h3  class={"mt-3"}>Enter Results By Subjects</h3>
-            <p class ={"mt-5 mb-5 home-action-row"}><a href={"#"}>To be replaced by a drop down list</a></p>
+
 
             </div>
 
-            <div class={"col-3 mt-5 border"}>
+            <div class={"col-3 mt-5 border"} id={"editResult"}>
             <h3  class={"mt-3"}>Edit Result</h3>
-            <p class ={"mt-5"}><a href={"#"}>Edit Results</a></p>
+
             </div>
 
             <div class={"col-3 mt-5 border"}>
@@ -41,6 +41,7 @@ class home extends React.Component {
 
 
           </div>
+          <script src={"/script/viewAllSubject.js"}></script>
         </body>
       </html>
     );
