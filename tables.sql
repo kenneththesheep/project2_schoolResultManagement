@@ -64,9 +64,10 @@ CREATE TABLE IF NOT EXISTS student_subject (
 );
 
 
-CREATE TABLE IF NOT EXISTS student_subject_result (
+CREATE TABLE IF NOT EXISTS student_subject_result_class (
     id SERIAL PRIMARY KEY,
     student_id INTEGER,
     subject_id INTEGER,
-    result_id INTEGER
+    result_id INTEGER,
+    class_id INTEGER
 );

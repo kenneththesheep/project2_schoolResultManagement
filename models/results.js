@@ -194,7 +194,7 @@ let processRemoveSubject = (student, callback) => {
 
 let viewStudentFromFormClassWithSubject = (user, callback) => {
     console.log("############Good Utility###############");
-
+    let compiledOutData= {};
     let outgoingStatus = {};
     let query = 'SELECT class_id FROM teachers INNER JOIN teacher_class ON (teachers.id = teacher_class.teacher_id) WHERE teacher_id = ($1)';
 
@@ -225,7 +225,7 @@ let viewStudentFromFormClassWithSubject = (user, callback) => {
 
           outgoingStatus.student= queryStudentResult.rows;
 
-        let activeStudentQuery = 'SELECT * FROM student_subject WHERE ';
+        let activeStudentQuery = 'SELECT  name, subjectname, student_id, subject_id FROM student_subject INNER JOIN students ON (students.id = student_subject.student_id) INNER JOIN subject ON (subject.id  = student_subject.subject_id) WHERE ';
 
         let activeStudentArray = [user.subject_id];
         for (let count =0; count < outgoingStatus.student.length; count ++)
@@ -248,7 +248,24 @@ let viewStudentFromFormClassWithSubject = (user, callback) => {
         // invoke callback function with results after query has executed
 
           outgoingStatus.activeStudent= queryActiveStudentResult.rows;
+          compiledOutData.activeStudents = queryActiveStudentResult.rows
+          console.log(compiledOutData);
+          callback(null, compiledOutData);
+                    /*dbPoolInstance.query(activeStudentQuery, activeStudentArray, (errorActiveStudent, queryActiveStudentResult) => {
+        if( errorActiveStudent ){
+        console.log(errorActiveStudent);
+        // invoke callback function with results after query has executed
+        callback(errorActiveStudent, null);
+
+        }else{
+
+        // invoke callback function with results after query has executed
+
+          outgoingStatus.activeStudent= queryActiveStudentResult.rows;
           callback(null, outgoingStatus);
+
+        }
+        });*/
 
         }
         });

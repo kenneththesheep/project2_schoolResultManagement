@@ -147,7 +147,7 @@ module.exports = (db) => {
        db.result.viewStudentFromFormClassWithSubject(data,(error, returningResult) => {
         response.send(returningResult);
         //response.redirect('/results/viewSubject');
-        //response.render('result/addSubject', returningResult);
+        //response.render('result/resultEntry', returningResult);
       });
   };
 
