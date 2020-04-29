@@ -187,12 +187,27 @@ module.exports = (db) => {
         data.SA1 = request.body.SA1;
 
         data.SA2 = request.body.SA2
-        for(let count =0; count < data.SA1.length; count++)
-        {
-            data.student_id[count]=parseInt (data.student_id[count]);
-            data.SA1[count] = parseInt(data.SA1[count]);
-            data.SA2[count] = parseInt(data.SA2[count]);
-        }
+        if(data.student_id.length>2){
+
+                for(let count =0; count < data.SA1.length; count++)
+                {
+
+                    console.log(data.student_id[count]);
+                    data.student_id[count]=parseInt (data.student_id[count]);
+                    data.SA1[count] = parseInt(data.SA1[count]);
+                    data.SA2[count] = parseInt(data.SA2[count]);
+                }
+            }
+            else{
+            for( count =0; count < data.SA1.length; count++)
+                {
+
+
+                    data.SA1[count] = parseInt(data.SA1[count]);
+                    data.SA2[count] = parseInt(data.SA2[count]);
+                }
+                data.student_id[0]=parseInt (data.student_id[0]);
+            }
         console.log(data);
        db.result.processMarkEntry(data,(error, returningResult) => {
         //response.send(returningResult);

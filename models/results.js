@@ -294,21 +294,30 @@ let processMarkEntry = (student, callback) => {
    const student_id = student.student_id;
    const SA1 = student.SA1;
    const SA2 = student.SA2;
+   console.log(SA1);
+   console.log(SA2);
     let outgoingStatus = {};
     let query = 'INSERT INTO result (sa1, sa2, overall) VALUES ';
     console.log(student_id.length);
     let marks = [];
+
     for ( let countEntry = 0; countEntry < (student_id.length*3); countEntry+=3)
     {
-        console.log("############Entry###############");
+        console.log("############EntryBEep bEEp Beep###############");
         query += `(($${countEntry+1}), ($${countEntry+2}), ($${countEntry+3})),`;
     }
-    for(countEntry=0; countEntry < student_id.length; countEntry++)
-    {
-        marks.push(SA1[countEntry]);
-        marks.push(SA2[countEntry]);
-        marks.push(SA1[countEntry]*0.45 + SA2[countEntry]*0.55);
-    }
+    if(student_id.length>1){
+        for(countEntry=0; countEntry < student_id.length; countEntry++)
+        {
+            marks.push(SA1[countEntry]);
+            marks.push(SA2[countEntry]);
+            marks.push(SA1[countEntry]*0.45 + SA2[countEntry]*0.55);
+        }}
+        else{
+            marks.push(SA1);
+            marks.push(SA2);
+            marks.push (SA1*0.45 + SA2*0.55);
+        }
 query=query.substring(0,query.length-1);
 query += ' RETURNING id';
 console.log(marks);
@@ -332,9 +341,18 @@ console.log(query);
                 {
                     combinedQuery += `(($${count+1}), ($${count+2}), ($${count+3}), ($${count+4})),`;
                 }
+                console.log(student_id);
+
                 for(count = 0; count < student_id.length; count ++)
                 {
+                    console.log(student_id[count]);
+                    if(!isNaN(student_id[count]))
+                    {
                     combinedArray.push(student_id[count]);
+                    }
+                    else{
+                        combinedArray.push(student_id[0]);
+                    }
                     combinedArray.push(subject_id);
                     combinedArray.push(outgoingStatus.marks_id[count].id);
                     combinedArray.push(class_id);
@@ -344,6 +362,7 @@ console.log(query);
                 console.log(combinedArray)
                    dbPoolInstance.query(combinedQuery, combinedArray, (errorCombined, queryCombinedResult) => {
         if( errorCombined ){
+            console.log ("fhdslfhldashflashflhsalfkhsalfhaslfhdaslfhlfh");
             console.log(errorCombined);
             // invoke callback function with results after query has executed
             callback(errorCombined, null);
