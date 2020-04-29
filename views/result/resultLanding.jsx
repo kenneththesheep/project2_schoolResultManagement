@@ -17,7 +17,8 @@ class home extends React.Component {
             </div>
             <div class={"row align-bottom mb-5"}>
             <div class={"col-3 mt-5 border"}>
-            <h3  class={"mt-3"}>Assign/ Remove subject to students</h3>
+            <h3  class={"mt-3"}>View/ Assign/ Remove subject to students</h3>
+            <p class ={"mt-5"}><a href={"/results/viewSubject"}>View</a></p>
             <p class ={"mt-5"}><a href={"/results/addSubject"}>Assign</a></p>
             <p class ={"mt-5"}><a href={"#"}>Remove</a></p>
             </div>

@@ -137,6 +137,7 @@ let checkSubjectTaken = (student, callback) => {
   return {
     findStudents:findStudents,
     checkSubjectNotTaken: checkSubjectNotTaken,
+    checkSubjectTaken:checkSubjectTaken,
     checkSubjectTaken: checkSubjectTaken,
   };
 };
