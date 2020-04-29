@@ -14,6 +14,11 @@ function selectName(event){
     var responseHandler = function() {
         //console.log(JSON.parse(this.responseText));
         console.log(this.responseText);
+        let subject = JSON.parse(this.responseText);
+        console.log(subject);
+        console.log(subject.length);
+        let subjectEntryBox = document.getElementById("subject");
+        ////// Add the select box here
     }
     // listen for the request response
     request.addEventListener("load", responseHandler);

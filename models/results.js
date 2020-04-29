@@ -71,7 +71,7 @@ module.exports = (dbPoolInstance) => {
     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     console.log(student);
     let outgoingStatus = {};
-    let query = 'SELECT subjectname FROM subject WHERE subjectname NOT IN (SELECT subjectname FROM subject INNER JOIN student_subject ON (subject.id = student_subject.subject_id) WHERE student_id= ($1) )';
+    let query = 'SELECT * FROM subject WHERE subjectname NOT IN (SELECT subjectname FROM subject INNER JOIN student_subject ON (subject.id = student_subject.subject_id) WHERE student_id= ($1) )';
     //let query = 'SELECT * FROM teachers';
     let studentId = [parseInt(student.id)];
     //loginname= [ 'bobobobob'];
