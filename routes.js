@@ -74,6 +74,7 @@ app.get('/utility/students',utilityControllerCallbacks.students);
     app.get("/results/add",resultsControllerCallbacks.keyResultForm);
     app.post("/results/add",resultsControllerCallbacks.keyResultProcess);
         app.get("/results/edit",resultsControllerCallbacks.editResultForm);
+         app.post("/results/edit",resultsControllerCallbacks.keyEditResultProcess);
     app.get("/results/view/all",resultsControllerCallbacks.viewAll);
     app.get("/results/view/subject",resultsControllerCallbacks.viewBySubject);
     app.get("/results/view/student",resultsControllerCallbacks.viewByStudent);

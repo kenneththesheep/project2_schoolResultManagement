@@ -153,22 +153,24 @@ module.exports = (db) => {
 
 
            let editResultForm = (request, response) => {
-    response.send('Welcome to Edit Result');
+
         console.log(request.query);
     //console.log(request.body);
 
     //response.render('result/resultLanding');
 
- /*       let data = {};
-        data.id = parseInt(request.body.student_id)
-            data.subject_id = parseInt(request.body.subject_id);
+        let data = {};
+       data.subject_id=parseInt(request.query.subject_id);
+        data.teacher_id=parseInt(request.cookies.userId);
 
-        console.log(data);*/
-/*       db.result.processRemoveSubject(data,(error, returningResult) => {
-        //response.send(returningResult);
-        response.redirect('/results/viewSubject');
-        //response.render('result/addSubject', returningResult);
-      });*/
+        console.log(data);
+       db.result.viewBySubject(data,(error, returningResult) => {
+        let outData={};
+        outData.activeStudents = returningResult
+        //response.send(outData);
+        //response.redirect('/results/viewSubject');
+        response.render('result/resultEdit', outData);
+      });
   };
 
 
@@ -210,6 +212,34 @@ module.exports = (db) => {
             }
         console.log(data);
        db.result.processMarkEntry(data,(error, returningResult) => {
+        //response.send(returningResult);
+        response.redirect('/results/');
+        //response.render('result/resultEntry', returningResult);
+      });
+  };
+
+
+         let keyEditResultProcess = (request, response) => {
+    //response.send(request.body);
+    //response.send(request.body);
+    console.log(request.body);
+
+
+        let data = {};
+        data.SA1 = [];
+        data.SA2 = [];
+        data.overall = [];
+        data.result_id = [];
+        for(let count = 0; count < request.body.result_id.length; count++)
+        {
+            data.SA1.push( parseInt ( request.body.SA1[count] ) );
+            data.SA2.push( parseInt ( request.body.SA2[count] ) );
+            data.overall.push( 0.45 * parseInt ( request.body.SA1[count] ) + 0.55 * parseInt ( request.body.SA2[count] ) )
+            data.result_id.push( parseInt ( ( request.body.result_id[count] ) ) );
+        }
+
+        console.log(data);
+       db.result.processEdit(data,(error, returningResult) => {
         //response.send(returningResult);
         response.redirect('/results/');
         //response.render('result/resultEntry', returningResult);
@@ -261,25 +291,25 @@ module.exports = (db) => {
   };
 
 
-       let viewByStudent = (request, response) => {
+        let viewByStudent = (request, response) => {
     //response.send('Welcome to viewAll');
-
-
-    //console.log(request.body);
+        console.log("$#@#$#@#$@#$@$@$ QUERY $#!$@$@$@#");
+        console.log(request.query);
+    //console.log(request.body/);
 
     //response.render('result/resultLanding');
 
         let data = {};
 
         data.teacher_id=parseInt(request.cookies.userId);
-
+        data.student_id = parseInt (request.query.student_id);
         console.log(data);
-       db.result.viewAll(data,(error, returningResult) => {
+       db.result.viewByStudent(data,(error, returningResult) => {
         let returnData = {};
         returnData.class = returningResult;
         //response.send(returningResult);
         //response.redirect('/results/viewResult');
-        response.render('result/viewResult', returnData);
+        response.render('result/viewByStudent', returnData);
       });
   };
 
@@ -303,6 +333,7 @@ module.exports = (db) => {
     viewAll : viewAll,
     viewBySubject : viewBySubject,
     viewByStudent : viewByStudent,
+    keyEditResultProcess: keyEditResultProcess,
     //keyResultProcess: keyResultProcess,
   };
 

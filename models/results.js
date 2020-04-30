@@ -430,6 +430,8 @@ let viewAll = (teacher, callback) => {
   };
 
 
+
+
 let viewBySubject = (teacher, callback) => {
     console.log("############View All###############");
    console.log(teacher);
@@ -454,7 +456,7 @@ let viewBySubject = (teacher, callback) => {
                 let classId = [queryResult.rows[0].class_id, teacher.subject_id];
                 console.log("Teacher subject Id is "+teacher.subject_id);
                 let subjectId = [teacher.subject_id];
-            let combinedQuery = 'SELECT name, gender, classname, subjectname, sa1, sa2, overall FROM student_subject_result_class INNER JOIN class ON (class.id = student_subject_result_class.class_id) INNER JOIN subject ON (subject.id = student_subject_result_class.subject_id) INNER JOIN students ON (students.id = student_subject_result_class.student_id) INNER JOIN result ON (result.id = student_subject_result_class.result_id) WHERE class_id = ($1) AND subject_id = ($2) ORDER BY gender, name, subjectname'
+            let combinedQuery = 'SELECT name, gender, classname, subjectname, sa1, sa2, overall, result_id FROM student_subject_result_class INNER JOIN class ON (class.id = student_subject_result_class.class_id) INNER JOIN subject ON (subject.id = student_subject_result_class.subject_id) INNER JOIN students ON (students.id = student_subject_result_class.student_id) INNER JOIN result ON (result.id = student_subject_result_class.result_id) WHERE class_id = ($1) AND subject_id = ($2) ORDER BY gender, name, subjectname'
 
 
                   dbPoolInstance.query(combinedQuery, classId, (errorCombine, queryCombineResult) => {
@@ -478,6 +480,167 @@ let viewBySubject = (teacher, callback) => {
   };
 
 
+let viewByStudent = (teacher, callback) => {
+    console.log("############View All###############");
+   console.log(teacher);
+    let outgoingStatus = {};
+    let teacher_array = [teacher.teacher_id];
+
+    console.log(teacher_array);
+    let query = 'SELECT class_id FROM teachers INNER JOIN teacher_class ON (teachers.id= teacher_class.teacher_id) WHERE teacher_id = ($1)'
+
+   dbPoolInstance.query(query, teacher_array, (error, queryResult) => {
+      if( error ){
+        console.log(error);
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                console.log(queryResult.rows[0]);
+                console.log("ldhsalfhlakhfkladshflkadshdflkdhasflhasl")
+                console.log(teacher);
+                let classId = [queryResult.rows[0].class_id, teacher.student_id];
+                console.log("Teacher subject Id is "+teacher.student_id);
+                let studentId = [teacher.student_id];
+            let combinedQuery = 'SELECT name, gender, classname, subjectname, sa1, sa2, overall FROM student_subject_result_class INNER JOIN class ON (class.id = student_subject_result_class.class_id) INNER JOIN subject ON (subject.id = student_subject_result_class.subject_id) INNER JOIN students ON (students.id = student_subject_result_class.student_id) INNER JOIN result ON (result.id = student_subject_result_class.result_id) WHERE class_id = ($1) AND student_id = ($2) ORDER BY gender, name, subjectname'
+
+
+                  dbPoolInstance.query(combinedQuery, classId, (errorCombine, queryCombineResult) => {
+      if( errorCombine ){
+        console.log(errorCombine);
+        // invoke callback function with results after query has executed
+        callback(errorCombine, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+                outgoingStatus= queryCombineResult.rows;
+                console.log (queryCombineResult.rows);
+                callback(null, outgoingStatus);
+
+      }
+    });
+
+      }
+    });
+  };
+
+
+let processEdit= (marks, callback) => {
+    console.log("############View Alfdkflajflajflkjl###############");
+
+    console.log(marks);
+
+/*    let query = 'UPDATE result  SET SA1 = nv.SA1, SA2 = nv.SA2, overall = nv.overall FROM ( VALUES ';
+    for (let count = 0; count < marks.result_id.length*4; count +=4)
+    {
+        query += `( $${count+1}, $${count+2}, $${count+3}, $${count+4} ), `
+    }
+    query = query.substring(0, query.length-2);
+    query += ' ) as nv (id, SA1, SA2, overall) where result.id = nv.id';
+    let updateArray=[]
+    for (let count =0 ; count < marks.result_id.length; count ++)
+    {
+        updateArray.push(marks.result_id);
+        updateArray.push(marks.SA1);
+        updateArray.push(marks.SA2);
+        updateArray.push(marks.overall);
+    }
+    console.log(query);*/
+    let query = 'UPDATE result SET SA1 = CASE '
+    for (let count = 0; count < marks.result_id.length * 2; count += 2)
+    {
+        query += `WHEN id = ($${count+1}) THEN  ($${count+2})`;
+    }
+    query += 'ELSE SA1 END';
+    let updateArray=[]
+        for (let count =0 ; count < marks.result_id.length; count ++)
+    {
+        updateArray.push(marks.result_id[count]);
+        updateArray.push(marks.SA1[count]);
+
+    }
+    console.log(updateArray);
+   dbPoolInstance.query(query, updateArray, (error, queryResult) => {
+      if( error ){
+        console.log(error);
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                    let querySA2 = 'UPDATE result SET SA2 = CASE '
+    for (let count = 0; count < marks.result_id.length * 2; count += 2)
+    {
+        querySA2 += `WHEN id = ($${count+1}) THEN  ($${count+2})`;
+    }
+    querySA2 += 'ELSE SA2 END';
+    let updateSA2Array=[]
+        for (let count =0 ; count < marks.result_id.length; count ++)
+    {
+        updateSA2Array.push(marks.result_id[count]);
+        updateSA2Array.push(marks.SA2[count]);
+
+    }
+    console.log(updateSA2Array);
+   dbPoolInstance.query(querySA2, updateSA2Array, (error, querySA2Result) => {
+      if( error ){
+        console.log(error);
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                console.log(querySA2Result.rows[0]);
+
+                                  let queryoverall = 'UPDATE result SET overall = CASE '
+    for (let count = 0; count < marks.result_id.length * 2; count += 2)
+    {
+        queryoverall += `WHEN id = ($${count+1}) THEN  ($${count+2})`;
+    }
+    queryoverall += 'ELSE overall END';
+    let updateoverallArray=[]
+        for (let count =0 ; count < marks.result_id.length; count ++)
+    {
+        updateoverallArray.push(marks.result_id[count]);
+        updateoverallArray.push(marks.overall[count]);
+
+    }
+    console.log(updateoverallArray);
+   dbPoolInstance.query(queryoverall, updateoverallArray, (error, queryoverallResult) => {
+      if( error ){
+        console.log(error);
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+                console.log(queryoverallResult.rows[0]);
+
+              callback(null, queryoverallResult.rows[0]);
+
+
+      }
+    });
+
+
+      }
+    });
+
+
+      }
+    });
+  };
+
 
   return {
     findStudents:findStudents,
@@ -490,5 +653,8 @@ let viewBySubject = (teacher, callback) => {
     processMarkEntry: processMarkEntry,
     viewAll: viewAll,
     viewBySubject:viewBySubject,
+    viewByStudent: viewByStudent,
+    processEdit:processEdit,
+
   };
 };
