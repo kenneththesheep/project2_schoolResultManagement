@@ -32,7 +32,67 @@ request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 request.addEventListener("load", loadResponseHandler);
 console.log (request);
   request.send(JSON.stringify(data));*/
+const createNav =()=>{
 
+    let navigation = document.createElement("nav");
+    navigation.classList.add("navbar");
+    navigation.classList.add("navbar-expand-lg");
+    navigation.classList.add("navbar-light");
+    navigation.classList.add("bg-light");
+    document.body.appendChild(navigation);
+    let outDiv = document.createElement("div");
+    outDiv.classList.add("collapse");
+    outDiv.classList.add("navbar-collapse");
+    outDiv.setAttribute("id","navbarNavAltMarkup");
+    navigation.appendChild(outDiv);
+    let innerDiv = document.createElement("div");
+    innerDiv.classList.add("navbar-nav");
+    outDiv.appendChild(innerDiv);
+
+    let first_link = document.createElement("a");
+    first_link.setAttribute("href", "/home");
+    first_link.classList.add("nav-item");
+    first_link.classList.add("nav-link");
+    first_link.classList.add("active");
+    first_link.innerText = "Home";
+    innerDiv.appendChild(first_link);
+
+    let second_link = document.createElement("a");
+    second_link.setAttribute("href", "/formclass");
+    second_link.classList.add("nav-item");
+    second_link.classList.add("nav-link");
+    second_link.innerText = "Form Class";
+    innerDiv.appendChild(second_link);
+
+    let third_link = document.createElement("a");
+    third_link.setAttribute("href", "/conduct");
+    third_link.classList.add("nav-item");
+    third_link.classList.add("nav-link");
+    third_link.innerText = "Conduct and HDP";
+    innerDiv.appendChild(third_link);
+
+    let fourth_link = document.createElement("a");
+    fourth_link.setAttribute("href", "/results");
+    fourth_link.classList.add("nav-item");
+    fourth_link.classList.add("nav-link");
+    fourth_link.innerText = "Result";
+    innerDiv.appendChild(fourth_link);
+
+    let last_link = document.createElement("a");
+    last_link.setAttribute("href", "/");
+    last_link.classList.add("nav-item");
+    last_link.classList.add("nav-link");
+    last_link.setAttribute("id", "logout");
+    last_link.innerText = "Log Out";
+    innerDiv.appendChild(last_link);
+
+    const movement = (event)=>{
+        console.log("Something");
+            document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    }
+    let clickyButton = document.getElementById("logout");
+    clickyButton.addEventListener("click",movement);
+}
 
 var responseHandler = function() {
   //console.log("response text", this.responseText);
@@ -44,6 +104,9 @@ var responseHandler = function() {
   {
     console.log("Something will happen");
     document.body.innerHTML="";
+
+    createNav();
+
     let container = document.createElement("div");
     container.classList.add("container");
     container.classList.add("border");
@@ -93,6 +156,9 @@ var responseHandler = function() {
   {
     console.log("Something will happen");
     document.body.innerHTML="";
+
+    createNav();
+
     let container = document.createElement("div");
     container.classList.add("container");
     container.classList.add("border");
