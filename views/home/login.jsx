@@ -13,11 +13,11 @@ class Login extends React.Component {
 
 
                         <div class={"row align-bottom mb-5"} >
-            <div class={"col-4 text-right"}>
+            <div class={"col-5 mt-3 text-right"}>
             <image src = {"/img/sheepCoatOfArm.png"} style = {{width : "70%"}} />
             </div>
-            <div class={"col-8 my-auto text-left"}>
-            <h1  class={"mt-3"}>Login Form</h1>
+            <div class={"col-7 my-auto text-left pl-4"}>
+            <h1  class={"mt-3"}>Regal <br/> Aries <br/> Management <br/> System</h1>
             </div>
             </div>
            <div class={"row"}>

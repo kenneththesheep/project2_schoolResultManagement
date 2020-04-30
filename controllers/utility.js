@@ -17,11 +17,13 @@ module.exports = (db) => {
 
   let test = (request, response) => {
 
-    response.send('test');
-        //  db.utility.allSubject((error, outgoingResult) => {
-          //  response.send(outgoingResult)
-        /*response.render('pokemon/index', { allPokemon });*/
-      //});
+    //response.send('test');
+    let data = {};
+    data.teacher_id = parseInt( request.cookies.userId );
+          db.utility.checkEmptyResultEntry(data, (error, outgoingResult) => {
+            response.send(outgoingResult)
+        //response.render('pokemon/index', { allPokemon });
+      });
   };
 
   /**

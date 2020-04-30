@@ -1,4 +1,4 @@
-# Tweedr!!!
+# To be replaced!!!
 
 Let's make a cool new app called TWEEDR!! Not Twitter, geez...
 
