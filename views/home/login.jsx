@@ -10,8 +10,13 @@ class Login extends React.Component {
                         <link rel={"stylesheet"} href={"style/style.css"}></link>
         <body>
           <div class={"container mt-3 tweetBox"}>
-                        <div class={"row align-bottom mb-5"}>
-            <div class={"col-12 mt-5 text-center"}>
+
+
+                        <div class={"row align-bottom mb-5"} >
+            <div class={"col-4 text-right"}>
+            <image src = {"/img/sheepCoatOfArm.png"} style = {{width : "70%"}} />
+            </div>
+            <div class={"col-8 my-auto text-left"}>
             <h1  class={"mt-3"}>Login Form</h1>
             </div>
             </div>
