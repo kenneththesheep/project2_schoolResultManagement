@@ -1,10 +1,9 @@
-console.log("hellow");
 
 // what to do when we recieve the request
 var responseHandler = function() {
 
   let subjects = JSON.parse(this.responseText);
-  console.log(subjects);
+
 
         let subjectBox = document.createElement('select');
         subjectBox.name = 'subject_id';
@@ -19,18 +18,7 @@ var responseHandler = function() {
 
         }
 
-        let subjectBox2 = document.createElement('select');
-        subjectBox2.name = 'subject_id';
-        subjectBox2.size = 1;
-        subjectBox2.required=true;
-        for( let subjectCount = 0; subjectCount < subjects.length; subjectCount ++)
-        {
-            let selectOption = document.createElement('option');
-            selectOption.value = subjects[subjectCount].id;
-            selectOption.innerText = subjects[subjectCount].subjectname;
-            subjectBox2.appendChild(selectOption);
 
-        }
 
 
   let addColumn = document.getElementById('addResult');
@@ -46,31 +34,147 @@ var responseHandler = function() {
     addForm.appendChild(insertButton);
 
 
-let editColumn = document.getElementById('editResult');
-  let editForm =document.createElement('form');
-    editForm.classList.add("mt-2");
-    editForm.action="/results/edit";
-    editForm.method="GET";
-    editColumn.appendChild(editForm);
-    editForm.appendChild(subjectBox2);
-      let insertButton2=document.createElement('input');
-  insertButton2.type="submit";
-  insertButton2.value="Enter Results";
-  insertButton2.setAttribute("id", "edit_button")
-    editForm.appendChild(insertButton2);
-/*
-  let editForm =document.createElement('form');
-  editForm.classList.add("mt-2");
-  editForm.action="/results/edit";
-  editForm.method="GET";
-  editColumn.appendChild(addForm);
-  editForm.appendChild(subjectBox);
-  editForm.appendChild(insertButton);*/
 
-var responseHandler2 = function() {
-    console.log(this.responseText);
-    let button = document.getElementById("edit_button");
-    button.value = "Edit the marks";
+/*
+*/
+
+var responseHandler2 = function()
+{
+
+    let newLine = document.createElement("br");
+    let link_to_view= document.getElementById("link_to_view");
+    let middle_text=document.getElementById("middleRowText");
+    let bottom_text=document.getElementById("bottomRowText");
+    let check = JSON.parse(this.responseText);
+    link_to_view.classList.add("hidden");
+    middle_text.classList.add("hidden");
+    bottom_text.classList.add("hidden");
+
+    if(check.length!==0 && link_to_view.classList.contains("hidden"))
+    {
+        link_to_view.classList.remove("hidden");
+
+        let noResult = document.getElementById("noResult");
+        noResult.classList.add("hidden");
+        middle_text.classList.remove("hidden");
+        bottom_text.classList.remove("hidden");
+    }
+
+    if(check.length!==0)
+    {
+        let subjectBox2 = document.createElement('select');
+        subjectBox2.name = 'subject_id';
+        subjectBox2.size = 1;
+        subjectBox2.required=true;
+
+        let subjectBox3 = document.createElement('select');
+        subjectBox3.name = 'subject_id';
+        subjectBox3.size = 1;
+        subjectBox3.required=true;
+
+        let subjectname = [];
+        let subjectid = [];
+        for( let subjectCount = 0; subjectCount < check.length; subjectCount ++)
+        {
+            subjectname.push(check[subjectCount].subjectname);
+            subjectid.push(check[subjectCount].subject_id)
+
+        }
+        let uniqueName = new Set (subjectname);
+        let uniqueId = new Set(subjectid);
+        subjectname = [...uniqueName];
+        subjectid = [...uniqueId];
+
+        for( let subjectCount = 0; subjectCount < subjectname.length; subjectCount ++)
+        {
+            let selectOption2 = document.createElement('option');
+            selectOption2.value = subjectid[subjectCount];
+            selectOption2.innerText = subjectname[subjectCount];
+            let selectOption3 = document.createElement('option');
+            selectOption3.value = subjectid[subjectCount];
+            selectOption3.innerText = subjectname[subjectCount];
+            subjectBox2.appendChild(selectOption2);
+            subjectBox3.appendChild(selectOption3);
+
+        }
+
+        let editColumn= document.getElementById("editResult");
+        let editForm =document.createElement('form');
+        editForm.classList.add("mt-2");
+        editForm.action="/results/edit";
+        editForm.method="GET";
+        editColumn.appendChild(editForm);
+        subjectBox2.classList.add("mb-3");
+        editForm.appendChild(subjectBox2);
+        let insertButton2=document.createElement('input');
+        insertButton2.type="submit";
+        insertButton2.value="Select Subject To Edit";
+        editForm.appendChild(insertButton2);
+
+
+
+        let viewBySubjectColumn= document.getElementById("middle_result_row");
+        let viewBySubjectForm =document.createElement('form');
+        viewBySubjectForm.classList.add("mt-2");
+        viewBySubjectForm.action="/results/view/subject";
+        viewBySubjectForm.method="GET";
+        viewBySubjectColumn.appendChild(viewBySubjectForm);
+        subjectBox3.classList.add("mb-3");
+        viewBySubjectForm.appendChild(subjectBox3);
+        let insertButton3=document.createElement('input');
+        insertButton3.type="submit";
+        insertButton3.value="Select Subject To View";
+        viewBySubjectForm.appendChild(insertButton3);
+
+
+        var responseHandler3 = function()
+    {
+    let students = JSON.parse( this.responseText );
+    console.log(students.students);
+        let studentBox = document.createElement('select');
+        studentBox.name = 'student_id';
+        studentBox.size = 1;
+        studentBox.required=true;
+        for( let studentCount = 0; studentCount < students.students.length; studentCount ++)
+        {
+            let selectOption = document.createElement('option');
+            selectOption.value = students.students[studentCount].student_id;
+            selectOption.innerText = students.students[studentCount].name;
+            console.log(students.students[studentCount].name);
+            studentBox.appendChild(selectOption);
+        }
+
+        let viewByStudentColumn= document.getElementById("bottom_result_row");
+        let viewByStudentForm =document.createElement('form');
+        viewByStudentForm.classList.add("mt-2");
+        viewByStudentForm.action="/results/view/student";
+        viewByStudentForm.method="GET";
+        viewByStudentColumn.appendChild(viewByStudentForm);
+        studentBox.classList.add("mb-3");
+        viewByStudentForm.appendChild(studentBox);
+        let insertStudentButton=document.createElement('input');
+        insertStudentButton.type="submit";
+        insertStudentButton.value="Select Student To View";
+        viewByStudentForm.appendChild(insertStudentButton);
+        console.log("bottom row")
+
+
+
+    }
+        var request3 = new XMLHttpRequest();
+
+        // listen for the request response
+        request3.addEventListener("load", responseHandler3);
+
+        // ready the system by calling open, and specifying the url
+        var url3 = "/utility/students";
+        request3.open("GET", url3);
+
+        // send the request
+    request3.send();
+
+    }
+
 }
 
 

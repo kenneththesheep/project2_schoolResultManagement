@@ -29,6 +29,7 @@ module.exports = (app, allModels) => {
 ////////////
 app.get('/utility',utilityControllerCallbacks.allSubject);
 app.get('/utility/test',utilityControllerCallbacks.test);
+app.get('/utility/students',utilityControllerCallbacks.students);
 
 
 
@@ -72,8 +73,10 @@ app.get('/utility/test',utilityControllerCallbacks.test);
     app.post('/results/subject/delete', resultsControllerCallbacks.processRemoveSubject);
     app.get("/results/add",resultsControllerCallbacks.keyResultForm);
     app.post("/results/add",resultsControllerCallbacks.keyResultProcess);
-        app.get("/results/edit",resultsControllerCallbacks.editResultForm)
-    app.get("/results/view/all",resultsControllerCallbacks.viewAll)
+        app.get("/results/edit",resultsControllerCallbacks.editResultForm);
+    app.get("/results/view/all",resultsControllerCallbacks.viewAll);
+    app.get("/results/view/subject",resultsControllerCallbacks.viewBySubject);
+    app.get("/results/view/student",resultsControllerCallbacks.viewByStudent);
 
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };

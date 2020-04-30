@@ -238,24 +238,71 @@ module.exports = (db) => {
       });
   };
 
+        let viewBySubject = (request, response) => {
+    //response.send('Welcome to viewAll');
+        console.log("$#@#$#@#$@#$@$@$ QUERY $#!$@$@$@#");
+        console.log(typeof  request.query.subject_id);
+    //console.log(request.body/);
+
+    //response.render('result/resultLanding');
+
+        let data = {};
+
+        data.teacher_id=parseInt(request.cookies.userId);
+        data.subject_id = parseInt (request.query.subject_id);
+        console.log(data);
+       db.result.viewBySubject(data,(error, returningResult) => {
+        let returnData = {};
+        returnData.class = returningResult;
+        //response.send(returningResult);
+        //response.redirect('/results/viewResult');
+        response.render('result/viewBySubject', returnData);
+      });
+  };
+
+
+       let viewByStudent = (request, response) => {
+    //response.send('Welcome to viewAll');
+
+
+    //console.log(request.body);
+
+    //response.render('result/resultLanding');
+
+        let data = {};
+
+        data.teacher_id=parseInt(request.cookies.userId);
+
+        console.log(data);
+       db.result.viewAll(data,(error, returningResult) => {
+        let returnData = {};
+        returnData.class = returningResult;
+        //response.send(returningResult);
+        //response.redirect('/results/viewResult');
+        response.render('result/viewResult', returnData);
+      });
+  };
+
   /**
    * ===========================================
    * Export controller functions as a module
    * ===========================================
    */
   return {
-    resultHome: resultHome,
-    viewSubject: viewSubject,
-    addSubject: addSubject,
-    checkSubjectNotTaken: checkSubjectNotTaken,
-    checkSubjectTaken:checkSubjectTaken,
-    processAddSubject:processAddSubject,
-    deleteSubject: deleteSubject,
-    processRemoveSubject: processRemoveSubject,
-    keyResultForm:keyResultForm,
-    editResultForm:editResultForm,
+    resultHome : resultHome,
+    viewSubject : viewSubject,
+    addSubject : addSubject,
+    checkSubjectNotTaken : checkSubjectNotTaken,
+    checkSubjectTaken : checkSubjectTaken,
+    processAddSubject : processAddSubject,
+    deleteSubject : deleteSubject,
+    processRemoveSubject : processRemoveSubject,
+    keyResultForm : keyResultForm,
+    editResultForm : editResultForm,
     keyResultProcess : keyResultProcess,
-    viewAll: viewAll,
+    viewAll : viewAll,
+    viewBySubject : viewBySubject,
+    viewByStudent : viewByStudent,
     //keyResultProcess: keyResultProcess,
   };
 

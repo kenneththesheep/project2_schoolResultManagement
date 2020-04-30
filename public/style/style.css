@@ -4,6 +4,12 @@
 	margin-top:30px;
 }
 
+.longBox{
+	background-color: #CCCCCC;
+	width: 60%;
+	margin-top:30px;
+}
+
 .horizontal-scroll-wrapper {
   /*width: 100px;*/
   height: 200px;
@@ -20,4 +26,7 @@
 
  .home-action-row{
  	height: 200px;
+ }
+ .hidden{
+ 	display:none;
  }

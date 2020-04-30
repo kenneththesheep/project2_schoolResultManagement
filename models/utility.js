@@ -49,9 +49,9 @@ module.exports = (dbPoolInstance) => {
         // invoke callback function with results after query has executed
         console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         class_id = [queryResult.rows[0].class_id];
-
+        //class_id = [1];
         console.log(class_id);
-        let checkResultOfClassquery = 'SELECT * from student_subject_result_class WHERE class_id = ($1)'
+        let checkResultOfClassquery = 'SELECT * from student_subject_result_class INNER JOIN subject ON (subject.id = student_subject_result_class.subject_id) WHERE class_id = ($1)'
             dbPoolInstance.query(checkResultOfClassquery, class_id, (errorClass, queryClassResult) => {
       if( errorClass ){
 

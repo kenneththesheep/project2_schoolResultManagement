@@ -26,6 +26,19 @@ module.exports = (db) => {
       });
   };
 
+  let students = (request, response) => {
+
+
+        let data = {};
+        data.id = request.cookies['userId'];
+
+
+        db.formClass.optionClassForm(data,(error, returningResult) => {
+        response.send(returningResult);
+        //response.render('formclass/formClassViewAll', returningResult);
+      });
+  };
+
   /**
    * ===========================================
    * Export controller functions as a module
@@ -34,6 +47,7 @@ module.exports = (db) => {
   return {
     allSubject: allSubject,
     test:test,
+    students: students,
 
   };
 
