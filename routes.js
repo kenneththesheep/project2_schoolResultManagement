@@ -28,6 +28,7 @@ module.exports = (app, allModels) => {
 
 ////////////
 app.get('/utility',utilityControllerCallbacks.allSubject);
+app.get('/utility/test',utilityControllerCallbacks.test);
 
 
 

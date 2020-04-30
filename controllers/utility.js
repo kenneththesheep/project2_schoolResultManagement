@@ -15,6 +15,14 @@ module.exports = (db) => {
       });
   };
 
+  let test = (request, response) => {
+
+    response.send('test');
+        //  db.utility.allSubject((error, outgoingResult) => {
+          //  response.send(outgoingResult)
+        /*response.render('pokemon/index', { allPokemon });*/
+      //});
+  };
 
   /**
    * ===========================================
@@ -23,6 +31,7 @@ module.exports = (db) => {
    */
   return {
     allSubject: allSubject,
+    test:test,
 
   };
 

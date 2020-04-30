@@ -56,6 +56,7 @@ let editColumn = document.getElementById('editResult');
       let insertButton2=document.createElement('input');
   insertButton2.type="submit";
   insertButton2.value="Enter Results";
+  insertButton2.setAttribute("id", "edit_button")
     editForm.appendChild(insertButton2);
 /*
   let editForm =document.createElement('form');
@@ -66,7 +67,28 @@ let editColumn = document.getElementById('editResult');
   editForm.appendChild(subjectBox);
   editForm.appendChild(insertButton);*/
 
+var responseHandler2 = function() {
+    console.log(this.responseText);
+    let button = document.getElementById("edit_button");
+    button.value = "Edit the marks";
+}
+
+
+
+var request2 = new XMLHttpRequest();
+
+// listen for the request response
+request2.addEventListener("load", responseHandler2);
+
+// ready the system by calling open, and specifying the url
+var url2 = "/utility/test";
+request2.open("GET", url2);
+
+// send the request
+request2.send();
 };
+
+
 
 // make a new request
 var request = new XMLHttpRequest();
