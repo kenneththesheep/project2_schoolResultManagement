@@ -36,7 +36,7 @@ const downloadsFolder = require('downloads-folder');
       const json2csvParser = new Json2csvParser({ header: true });
       const csv = json2csvParser.parse(jsonData);
 
-      fs.writeFile(${__dirname}+downloadDirectory+"/bezkoder_postgresql_fs.csv", csv, function(error) {
+      fs.writeFile(downloadDirectory+"/bezkoder_postgresql_fs.csv", csv, function(error) {
         if (error) throw error;
         console.log("Write to bezkoder_postgresql_fs.csv successfully!");
       });
