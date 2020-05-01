@@ -46,14 +46,16 @@ var responseHandler2 = function()
     let middle_text=document.getElementById("middleRowText");
     let bottom_text=document.getElementById("bottomRowText");
     let check = JSON.parse(this.responseText);
+    check.length = 0;
     link_to_view.classList.add("hidden");
+    link_to_view.classList.remove("fakebutton");
     middle_text.classList.add("hidden");
     bottom_text.classList.add("hidden");
 
     if(check.length!==0 && link_to_view.classList.contains("hidden"))
     {
         link_to_view.classList.remove("hidden");
-
+        link_to_view.classList.add("fakebutton");
         let noResult = document.getElementById("noResult");
         noResult.classList.add("hidden");
         middle_text.classList.remove("hidden");
