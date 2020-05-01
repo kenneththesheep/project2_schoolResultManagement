@@ -219,7 +219,7 @@ let individualStudentReport = (data, callback) => {
     // create a document and pipe to a blob
 var doc = new PDFDocument();
 let downloadDirectory = downloadsFolder();
-var stream = doc.pipe(fs.createWriteStream(downloadDirectory +'/Testfile.pdf'));
+var stream = doc.pipe(fs.createWriteStream(downloadDirectory +'Testfile.pdf'));
 console.log(data.stuentclass);
 console.log(downloadDirectory);
 
