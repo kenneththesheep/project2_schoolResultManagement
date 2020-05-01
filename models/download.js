@@ -221,6 +221,7 @@ var doc = new PDFDocument();
 let downloadDirectory = downloadsFolder();
 var stream = doc.pipe(fs.createWriteStream(downloadDirectory +'/Testfile.pdf'));
 console.log(data.stuentclass);
+console.log(downloadDirectory);
 
 doc
   .text('', 180, 30)
