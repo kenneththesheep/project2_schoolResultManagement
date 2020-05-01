@@ -44,16 +44,16 @@ if ((passSubject > 2||(passSubject > 0 && failEnglish))&&averageOverall>49)
 
 
                 <div class = {"col-3 border-right"}>
-                    <p>{student.subjectname}</p>
+                    <p class={"subject"}>{student.subjectname}</p>
                 </div>
                 <div class = {"col-3 border-right"}>
-                    <p>{student.sa1}</p>
+                    <p class={"sa1"}>{student.sa1}</p>
                 </div>
                 <div class = {"col-3 border-right"}>
-                    <p>{student.sa2}</p>
+                    <p class={"sa2"}>{student.sa2}</p>
                 </div>
                 <div class = {"col-3 "}>
-                    <p>{Math.floor(student.overall)}</p>
+                    <p class={"overall"}>{Math.floor(student.overall)}</p>
                 </div>
             </div>
 
@@ -71,12 +71,12 @@ if ((passSubject > 2||(passSubject > 0 && failEnglish))&&averageOverall>49)
         <div class={"container mt-3 border"}>
         <div class={"row align-bottom mb-1"}>
             <div class={"col-12"}>
-            <h5  class={"mt-3"}>Name: {this.props.class[0].name}</h5>
+            <h5  class={"mt-3"} id={"student_name"}>Name: {this.props.class[0].name}</h5>
             </div>
             </div>
             <div class={"row align-bottom mb-5"}>
             <div class={"col-12 "}>
-            <h5  class={"mt-3"}>Class: {this.props.class[0].classname}</h5>
+            <h5  class={"mt-3"} id={"class"}>Class: {this.props.class[0].classname}</h5>
             </div>
             </div>
 
@@ -98,15 +98,25 @@ if ((passSubject > 2||(passSubject > 0 && failEnglish))&&averageOverall>49)
         {student}
         <div class = {"row border pt-4"}>
         <div class= {"col-12"}>
-            <p>Conduct Grade: {this.props.class[0].conductgrade}</p>
-            <p>Remark: {this.props.class[0].remark}</p>
-            <p>Overall Percentage : {averageOverall} %</p>
-            <p>(Pass/Fail): {passStatus}</p>
-            <p>Promotion Status: {promotionStatus}</p>
+            <p id={"conductgrade"}>Conduct Grade: {this.props.class[0].conductgrade}</p>
+            <p id={"remark"}>Remark: {this.props.class[0].remark}</p>
+            <p id={"overallPercent"}>Overall Percentage : {averageOverall} %</p>
+            <p id={"passStatus"}>(Pass/Fail): {passStatus}</p>
+            <p id ={"promotionStatus"}>Promotion Status: {promotionStatus}</p>
         </div>
         </div>
-         </div>
 
+         </div>
+                         <div class={"container mt-3 mb-5"}>
+        <div class={"row"}>
+            <div class = {"col-3  mx-auto text-center"}>
+                 <button id ="individualStudentReport">Download</button>
+            </div>
+
+        </div>
+        </div>
+
+         <script src={"/script/individualStudentResultDownload.js"}></script>
 
         </body>
       </html>

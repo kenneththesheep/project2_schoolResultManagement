@@ -72,6 +72,25 @@ let allResult = (request, response) => {
         //response.render('formclass/formClassLanding', returningResult);
       });
   };
+
+
+
+    let studentReport = (request, response) => {
+
+    //response.send("download individual report")
+    console.log("jkfhdakhfkhfkjshfksahfkjhafkhafkhakfhdskjfhaskhfkjashf");
+    console.log(request.body);
+    let data = {};
+    data= request.body;
+   console.log(data);
+
+        db.download.individualStudentReport(data,(error, returningResult) => {
+        //response.send(returningResult);
+        //console.log(returningResult);
+        response.send(returningResult)
+        //response.render('formclass/formClassLanding', returningResult);
+      });
+  };
   /**
    * ===========================================
    * Export controller functions as a module
@@ -82,6 +101,7 @@ let allResult = (request, response) => {
     conduct: conduct,
     allResult: allResult,
     resultBySubject: resultBySubject,
+    studentReport: studentReport
 
   };
 

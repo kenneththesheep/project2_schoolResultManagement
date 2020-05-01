@@ -6,6 +6,8 @@
 module.exports = (dbPoolInstance) => {
 const Json2csvParser = require("json2csv").Parser;
 const fs = require("fs");
+const PDFDocument = require('pdfkit');
+const blobStream  = require('blob-stream');
 var http = require('http');
 const downloadsFolder = require('downloads-folder');
   // `dbPoolInstance` is accessible within this function scope
@@ -211,10 +213,119 @@ let downloadResultBySubject = (userlogin, callback) => {
   };
 
 
+let individualStudentReport = (data, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%Conduct%%%%%%%%%%%%%%%%%%%%%%%%");
+    console.log(data);
+    // create a document and pipe to a blob
+var doc = new PDFDocument();
+let downloadDirectory = downloadsFolder();
+var stream = doc.pipe(fs.createWriteStream(downloadDirectory +'/Testfile.pdf'));
+console.log(data.stuentclass);
+
+doc
+  .text('', 180, 30)
+  .font('Times-Roman', 30)
+  .fontSize(40)
+  .font('Times-Bold', 20)
+  .text('HDP Result Slip', {
+    width: 500,
+    align: 'center',
+    indent: 30,
+    columns: 2,
+    height: 300,
+    ellipsis: true
+  });
+
+
+  doc
+   .font('Times-Roman', 20)
+  .text(data.studentname, 30, 90)
+  .font('Times-Roman', 20)
+  .moveDown();
+
+ doc
+  .text(data.stuentclass, 30, 120)
+  .font('Times-Bold', 20);
+
+doc
+    .text("Subject Name", 30, 170)
+    .text("SA1", 200, 170)
+    .text("SA2", 290, 170)
+    .text("Overall", 390, 170)
+    .font('Times-Roman', 20)
+    .text(data.subjectName[0], 30, 220)
+    .text(data.sa1[0], 200, 220)
+    .text(data.sa2[0], 290, 220)
+    .text(data.overall[0], 390, 220)
+    .text(data.subjectName[1], 30, 270)
+    .text(data.sa1[1], 200, 270)
+    .text(data.sa2[1], 290, 270)
+    .text(data.overall[1], 390, 270)
+    .text(data.subjectName[2], 30, 320)
+    .text(data.sa1[2], 200, 320)
+    .text(data.sa2[2], 290, 320)
+    .text(data.overall[2], 390, 320)
+    .text(data.subjectName[3], 30, 370)
+    .text(data.sa1[3], 200, 370)
+    .text(data.sa2[3], 290, 370)
+    .text(data.overall[3], 390, 370)
+    .text(data.overallPercent, 30, 430)
+    .text(data.passStatus, 30, 480)
+    .text(data.promotionStatus, 270, 480)
+    .text(data.conductgrade, 30, 530)
+    .text(data.remark, 30, 580)
+    .text("V/Principal's", 30, 670)
+    .text("signature", 30, 690)
+    .text("Teacher's ", 200, 670)
+    .text("signature", 200, 690)
+    .text("Parent/Guardian's ", 390, 670)
+    .text("signature", 390, 690);
+
+doc
+    .moveTo(20, 200)
+    .lineTo(470, 200)
+    .stroke();
+
+doc
+    .moveTo(190, 160)
+    .lineTo(190, 400)
+    .stroke();
+
+doc
+    .moveTo(280, 160)
+    .lineTo(280, 400)
+    .stroke();
+
+doc
+    .moveTo(380, 160)
+    .lineTo(380, 400)
+    .stroke();
+
+doc
+    .moveTo(20, 660)
+    .lineTo(150, 660)
+    .stroke();
+
+doc
+    .moveTo(190, 660)
+    .lineTo(320, 660)
+    .stroke();
+
+doc
+    .moveTo(380, 660)
+    .lineTo(530, 660)
+    .stroke();
+
+doc.end();
+callback(null, "Created pdf in download folder");
+
+  };
+
   return {
     download:download,
     downloadConduct: downloadConduct,
     downloadAllResult: downloadAllResult,
     downloadResultBySubject: downloadResultBySubject,
+    individualStudentReport: individualStudentReport,
   };
 };
