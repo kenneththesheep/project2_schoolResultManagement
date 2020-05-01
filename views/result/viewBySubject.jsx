@@ -47,6 +47,7 @@ let insertStringArray = [];
             </div>
             </div>
         </div>
+                <div class ={"container"}>
         <div class ={"row"}>
             <div class = {"col-3 border"}>
             <h4>Student Name</h4>
@@ -64,8 +65,9 @@ let insertStringArray = [];
             <h4>Overall</h4>
             </div>
         </div>
-        {student}
 
+        {student}
+        </div>
                 <div class={"container mt-3 mb-5"}>
         <div class={"row"}>
             <div class = {"col-3  mx-auto text-center"}>

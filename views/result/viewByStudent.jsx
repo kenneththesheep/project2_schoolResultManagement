@@ -4,8 +4,36 @@ class home extends React.Component {
   render() {
 console.log(this.props.class.length);
 let insertStringArray = [];
+console.log(this.props.class);
+let promotionStatus = "Pending";
+let totalOverall = 0;
+let averageOverall = 0;
+let failEnglish = false;
+let passSubject = 0;
+let passStatus="Fail";
+for(let count = 0; count < this.props.class.length; count++)
+{
 
+    totalOverall += parseInt (this.props.class[count].overall);
+    if(this.props.class[count].subjectname==='English' && parseInt( this.props.class[count].overall ) < 50)
+    {
+        failEnglish = true;
+    }
+    if (parseInt(this.props.class[count].overall) > 49)
+    {
+        passSubject ++;
+    }
 
+}
+console.log(totalOverall);
+averageOverall = totalOverall/ this.props.class.length;
+console.log("AVerage overall is "+averageOverall);
+
+if ((passSubject > 2||(passSubject > 0 && failEnglish))&&averageOverall>49)
+{
+    passStatus = "Pass";
+    promotionStatus = "Promoted";
+}
 
       const student=this.props.class.map((student, index)=>
         {
@@ -55,7 +83,7 @@ let insertStringArray = [];
         <div class ={"row"}>
 
             <div class = {"col-3 border"}>
-            <h4>Subject Name</h4>
+            <h4>Subject</h4>
             </div>
             <div class = {"col-3 border"}>
             <h4>SA1</h4>
@@ -68,6 +96,15 @@ let insertStringArray = [];
             </div>
         </div>
         {student}
+        <div class = {"row border pt-4"}>
+        <div class= {"col-12"}>
+            <p>Conduct Grade: {this.props.class[0].conductgrade}</p>
+            <p>Remark: {this.props.class[0].remark}</p>
+            <p>Overall Percentage : {averageOverall} %</p>
+            <p>(Pass/Fail): {passStatus}</p>
+            <p>Promotion Status: {promotionStatus}</p>
+        </div>
+        </div>
          </div>
 
 

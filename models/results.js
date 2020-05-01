@@ -505,7 +505,7 @@ let viewByStudent = (teacher, callback) => {
                 let classId = [queryResult.rows[0].class_id, teacher.student_id];
                 console.log("Teacher subject Id is "+teacher.student_id);
                 let studentId = [teacher.student_id];
-            let combinedQuery = 'SELECT name, gender, classname, subjectname, sa1, sa2, overall FROM student_subject_result_class INNER JOIN class ON (class.id = student_subject_result_class.class_id) INNER JOIN subject ON (subject.id = student_subject_result_class.subject_id) INNER JOIN students ON (students.id = student_subject_result_class.student_id) INNER JOIN result ON (result.id = student_subject_result_class.result_id) WHERE class_id = ($1) AND student_id = ($2) ORDER BY gender, name, subjectname'
+            let combinedQuery = 'SELECT name, gender, classname, subjectname, sa1, sa2, overall, remark, conductgrade FROM student_subject_result_class INNER JOIN class ON (class.id = student_subject_result_class.class_id) INNER JOIN subject ON (subject.id = student_subject_result_class.subject_id) INNER JOIN students ON (students.id = student_subject_result_class.student_id) INNER JOIN result ON (result.id = student_subject_result_class.result_id) INNER JOIN student_conduct ON (students.id = student_conduct.student_id) INNER JOIN conduct ON (conduct.id = student_conduct.conduct_id) WHERE class_id = ($1) AND student_subject_result_class.student_id = ($2) ORDER BY gender, name, subjectname'
 
 
                   dbPoolInstance.query(combinedQuery, classId, (errorCombine, queryCombineResult) => {

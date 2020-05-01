@@ -112,7 +112,7 @@ var responseHandler = function() {
     container.classList.add("container");
     container.classList.add("border");
     container.classList.add("longBox");
-    container.classList.add("mt-5");
+    container.classList.add("mt-3");
     container.classList.add("pb-5");
     document.body.appendChild(container);
 
@@ -166,7 +166,7 @@ var responseHandler = function() {
     let container = document.createElement("div");
     container.classList.add("container");
     container.classList.add("longBox");
-    container.classList.add("mt-5");
+    container.classList.add("mt-3");
     container.classList.add("pb-5");
     container.classList.add("border");
     document.body.appendChild(container);

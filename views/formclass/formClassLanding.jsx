@@ -19,7 +19,7 @@ class home extends React.Component {
                       <DefaultLayout title={this.props.title}>
         <div>{this.props.name}</div>
       </DefaultLayout>
-          <div class={"container mt-3 "}>
+          <div class={"container mt-3  longBox "}>
             <div class={"row align-bottom mb-5"}>
             <div class={"col-12 mt-5 text-center"}>
             <h1  class={"mt-3"}>Welcome to {this.props.class[0].classname} matters</h1>
