@@ -3,11 +3,23 @@ var DefaultLayout = require('../layout/navigation')
 
 class home extends React.Component {
   render() {
+    console.log("VIEW ALL RESULT JFDKSJAFKASJFASJFLDASJFLDASJFLADSJFDALSJFDLSAJFSL");
+    console.log(this.props.class);
+    let subjectArray = [];
+    for (let count = 0; count < this.props.class.length; count ++)
+    {
+        subjectArray.push(this.props.class[count].subjectname);
+    }
+
+    let uniqueSet = new Set(subjectArray);
+    subjectArray = [...uniqueSet];
+     console.log(subjectArray);
 console.log(this.props.class.length);
-let insertStringArray = [];
+
+
 
 const nameCall = index=>{
-if(index%4 === 0)
+if(index% subjectArray.length === 0)
 {
     return <div class = {"col-3 border-top"}><p>{this.props.class[index].name}</p></div>
 }
@@ -61,6 +73,7 @@ else
             </div>
             </div>
         </div>
+        <div class={"container border mt-3 mb-5"}>
         <div class ={"row"}>
             <div class = {"col-3 border"}>
             <h4>Student Name</h4>
@@ -79,9 +92,17 @@ else
             </div>
         </div>
         {student}
+        </div>
 
+        <div class={"container mt-3 mb-5"}>
+        <div class={"row"}>
+            <div class = {"col-3  mx-auto text-center"}>
+                <button id={"downloadResult"}>Download Results</button>
+            </div>
 
-
+        </div>
+        </div>
+        <script src = {"/script/downloadFullResult.js"}></script>
         </body>
       </html>
     );

@@ -21,9 +21,9 @@ class home extends React.Component {
             <div class={"row align-bottom mb-5"}>
             <div class={"col-3 mt-5 border"}>
             <h3  class={"mt-3"}>View/ Assign/ Remove subject to students</h3>
-            <p class ={"mt-5"}><a href={"/results/viewSubject"}>View</a></p>
-            <p class ={"mt-5"}><a href={"/results/addSubject"}>Assign</a></p>
-            <p class ={"mt-5"}><a href={"/results/removeSubject"}>Remove</a></p>
+            <p class ={"mt-5"}><a href={"/results/viewSubject"} class={"fakebutton"}>View</a></p>
+            <p class ={"mt-5"}><a href={"/results/addSubject"} class={"fakebutton"}>Assign</a></p>
+            <p class ={"mt-5"}><a href={"/results/removeSubject"} class={"fakebutton"}>Remove</a></p>
             </div>
             <div class={"col-3 mt-5 border"} id={"addResult"}>
             <h3  class={"mt-3"}>Enter Results By Subjects</h3>
@@ -42,7 +42,7 @@ class home extends React.Component {
 
             <div class = {"row"} id ={"top_result_row"}>
             <div class ={"col-12"}>
-            <p class ={"mt-5"}><a href={"/results/view/all"} id = {"link_to_view"}>View/ Print All Results</a></p>
+            <p class ={"mt-5"}><a href={"/results/view/all"} id = {"link_to_view"}  class={"fakebutton"}>View All Results</a></p>
             </div>
             </div>
 
