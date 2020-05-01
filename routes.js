@@ -25,6 +25,7 @@ module.exports = (app, allModels) => {
 
  const utilityControllerCallbacks = require('./controllers/utility')(allModels);
 
+const downloadControllerCallbacks = require('./controllers/download')(allModels);
 
 ////////////
 app.get('/utility',utilityControllerCallbacks.allSubject);
@@ -78,6 +79,10 @@ app.get('/utility/students',utilityControllerCallbacks.students);
     app.get("/results/view/all",resultsControllerCallbacks.viewAll);
     app.get("/results/view/subject",resultsControllerCallbacks.viewBySubject);
     app.get("/results/view/student",resultsControllerCallbacks.viewByStudent);
+
+
+
+    app.post("/download/formclass", downloadControllerCallbacks.initialCheck);
 
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };

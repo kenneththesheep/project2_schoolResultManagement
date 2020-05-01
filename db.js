@@ -14,6 +14,8 @@
 
 const pg = require('pg');
 const url = require('url');
+const Json2csvParser = require("json2csv").Parser;
+const fs = require("fs");
 
 var configs;
 
@@ -88,6 +90,10 @@ const resultModelsObject = resultsModelsFunction( pool );
 const utilityModelsFunction = require('./models/utility');
 
 const utilityModelsObject = utilityModelsFunction( pool );
+
+const downloadModelsFunction = require('./models/download');
+
+const downloadModelsObject = downloadModelsFunction( pool );
 /*
  * ===================================================
  * ===================================================
@@ -121,4 +127,5 @@ module.exports = {
   conduct: conductModelsObject,
   result: resultModelsObject,
   utility: utilityModelsObject,
+  download: downloadModelsObject,
 };

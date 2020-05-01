@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",
+    "downloads-folder": "^1.0.3",
     "express": "^4.16.3",
     "express-react-views": "^0.10.5",
     "js-sha256": "^0.9.0",
+    "json2csv": "^5.0.1",
     "method-override": "^2.3.10",
     "pg": "^7.4.3",
     "react": "^16.3.2",
