@@ -280,6 +280,7 @@ module.exports = (db) => {
 
         data.teacher_id=parseInt(request.cookies.userId);
         data.subject_id = parseInt (request.query.subject_id);
+        response.cookie('subject_id', parseInt (request.query.subject_id));
         console.log(data);
        db.result.viewBySubject(data,(error, returningResult) => {
         let returnData = {};

@@ -190,7 +190,6 @@ let singleStudentConduct = (request, response) => {
     //response.send (data);
 
 
-
         db.conduct.singleConductProcess(data,(error, returningResult) => {
             //response.send(returningResult);
             //response.redirect(returningResult);

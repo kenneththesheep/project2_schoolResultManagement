@@ -66,7 +66,15 @@ let insertStringArray = [];
         </div>
         {student}
 
+                <div class={"container mt-3 mb-5"}>
+        <div class={"row"}>
+            <div class = {"col-3  mx-auto text-center"}>
+                <button id = 'downloadBySubject'>Download</button>
+            </div>
 
+        </div>
+        </div>
+        <script src = {"/script/downloadBySubject.js"} ></script>
 
         </body>
       </html>

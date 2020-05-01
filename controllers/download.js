@@ -55,6 +55,23 @@ let allResult = (request, response) => {
         //response.render('formclass/formClassLanding', returningResult);
       });
   };
+
+  let resultBySubject = (request, response) => {
+
+    //response.send("download result by subject")
+    //console.log(request.body);
+    let data = {};
+   data.teacher_id = parseInt(request.body.teacherId);
+   data.subject_id = parseInt(request.body.subjectId);
+   console.log(data);
+
+        db.download.downloadResultBySubject(data,(error, returningResult) => {
+        //response.send(returningResult);
+        //console.log(returningResult);
+        response.send(returningResult)
+        //response.render('formclass/formClassLanding', returningResult);
+      });
+  };
   /**
    * ===========================================
    * Export controller functions as a module
@@ -63,7 +80,8 @@ let allResult = (request, response) => {
   return {
     initialCheck:initialCheck,
     conduct: conduct,
-    allResult: allResult
+    allResult: allResult,
+    resultBySubject: resultBySubject,
 
   };
 

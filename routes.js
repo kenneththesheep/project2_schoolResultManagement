@@ -86,7 +86,8 @@ app.get('/utility/students',utilityControllerCallbacks.students);
 
     app.post("/download/formclass", downloadControllerCallbacks.initialCheck);
     app.post("/download/conduct", downloadControllerCallbacks.conduct);
-        app.post("/download/allResult", downloadControllerCallbacks.allResult);
+    app.post("/download/allResult", downloadControllerCallbacks.allResult);
+    app.post("/download/ResultByResult", downloadControllerCallbacks.resultBySubject);
 
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };

@@ -18,7 +18,7 @@ var responseHandler = function(){
    console.log("status text", this.statusText);
   console.log("status code", this.status);
   console.log(this.responseText);
-
+  alert(this.responseText);
 }
 
 
