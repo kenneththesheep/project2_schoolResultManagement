@@ -40,6 +40,8 @@ const downloadsFolder = require('downloads-folder');
       fs.writeFile("bezkoder_postgresql_fs.csv", csv, function(error){
         if (error) throw error;
         console.log("Write to bezkoder_postgresql_fs.csv successfully!");
+        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        console.log(downloadsFolder());
       });
 
             outgoingStatus = queryResult.rows;
