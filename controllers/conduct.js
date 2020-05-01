@@ -164,6 +164,42 @@ let studentProcess = (request, response) => {
 
       });
   };
+
+let singleStudentConduct = (request, response) => {
+    //let teacher_id = request.cookies.userId;
+    //response.send(request.params);
+    let data = {};
+    data.student_id = parseInt(request.params.student_id);
+    response.render('conduct/addSingleConductForm', data);
+/*    data.student_id = parseInt(request.body.student);
+
+        db.conduct.studentProcess(data,(error, returningResult) => {
+            response.send(returningResult);
+            //response.redirect(returningResult);
+            //response.render('conduct/selectStudent', returningResult)
+            //response.redirect('/conduct/view')
+
+      });*/
+  };
+
+  let processSingleStudentConduct = (request, response) => {
+    //let teacher_id = request.cookies.userId;
+    //response.send(request.body);
+    let data = {};
+    data = request.body;
+    //response.send (data);
+
+
+
+        db.conduct.singleConductProcess(data,(error, returningResult) => {
+            //response.send(returningResult);
+            //response.redirect(returningResult);
+            //response.render('conduct/selectStudent', returningResult)
+            response.redirect('/conduct/view')
+
+      });
+  };
+
   /**
    * ===========================================
    * Export controller functions as a module
@@ -178,7 +214,9 @@ let studentProcess = (request, response) => {
     editSingle: editSingle,
     editSingleProcess: editSingleProcess,
     conductSelect: conductSelect,
-    studentProcess: studentProcess
+    studentProcess: studentProcess,
+    singleStudentConduct: singleStudentConduct,
+    processSingleStudentConduct:processSingleStudentConduct,
 
   };
 

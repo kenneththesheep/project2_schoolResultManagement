@@ -432,15 +432,74 @@ let processForm = (dataEntry, callback) => {
       }else{
 console.log("fkhdskjafhdkjshfkahfjksahfkjsahfjkashfdkjdshfkhas");
         // invoke callback function with results after query has executed
-
-    outgoingStatus   = queryResult.rows[0];
-    const url = "/conduct/" + queryResult.rows[0].conduct_id + "/edit";
-    console.log(url);
-    callback(null,url);
+        if(queryResult.rows.length>0){
+            outgoingStatus   = queryResult.rows[0];
+            const url = "/conduct/" + queryResult.rows[0].conduct_id + "/edit";
+            console.log(url);
+            callback(null,url);}
+            else
+            {
+                const url = "/conduct/addSingle/" + login.student_id ;
+                callback (null, url);
+            }
 
 
 
       }
+    });
+  };
+
+let singleConductProcess = (information, callback) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+
+    let query = 'INSERT INTO conduct (remark, conductgrade) VALUES ($1, $2) RETURNING id';
+    //let query = 'SELECT * FROM teachers';
+    let conductArray = [information.remarks, information.conductGrade];
+    //loginname= [ 'bobobobob'];
+    let outgoingStatus = {};
+    dbPoolInstance.query(query, conductArray, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        console.log(error);
+        callback(error, null);
+
+      }else{
+console.log("fkhdskjafhdkjshfkahfjksahfkjsahfjkashfdkjdshfkhas");
+        // invoke callback function with results after query has executed
+
+            let conduct_id   = queryResult.rows[0].id;
+            let student_id = parseInt(information.student_id);
+
+            let queryJoined = 'INSERT INTO student_conduct (student_id, conduct_id) VALUES ($1, $2) ';
+    let conductStudentArray = [student_id, conduct_id];
+    //loginname= [ 'bobobobob'];
+
+    dbPoolInstance.query(queryJoined, conductStudentArray, (error, queryResult) => {
+      if( error ){
+
+        // invoke callback function with results after query has executed
+        console.log(error);
+        callback(error, null);
+
+      }else{
+    console.log("Success");
+        // invoke callback function with results after query has executed
+
+            callback(null,outgoingStatus);
+
+
+
+
+        }
+
+    });
+
+
+
+
+        }
+
     });
   };
 
@@ -452,6 +511,7 @@ console.log("fkhdskjafhdkjshfkahfjksahfkjsahfjkashfdkjdshfkhas");
     editSingle: editSingle,
     editSingleProcess: editSingleProcess,
     conductSelect: conductSelect,
-    studentProcess: studentProcess
+    studentProcess: studentProcess,
+    singleConductProcess: singleConductProcess
   };
 };

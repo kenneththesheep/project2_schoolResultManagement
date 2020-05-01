@@ -61,6 +61,8 @@ app.get('/utility/students',utilityControllerCallbacks.students);
     app.post('/conduct/', conductControllerCallbacks.processForm);
     app.get('/conduct/:id/edit', conductControllerCallbacks.editSingle);
     app.put('/conduct/:id',conductControllerCallbacks.editSingleProcess);
+    app.get('/conduct/addSingle/:student_id', conductControllerCallbacks.singleStudentConduct);
+    app.post('/conduct/single', conductControllerCallbacks.processSingleStudentConduct);
 
 //////////callbacks relating to result
     app.get('/results', resultsControllerCallbacks.resultHome);
@@ -83,6 +85,7 @@ app.get('/utility/students',utilityControllerCallbacks.students);
 
 
     app.post("/download/formclass", downloadControllerCallbacks.initialCheck);
+    app.post("/download/conduct", downloadControllerCallbacks.conduct);
 
   //app.get('/pokemons/:id', pokemons.getPokemon);
 };

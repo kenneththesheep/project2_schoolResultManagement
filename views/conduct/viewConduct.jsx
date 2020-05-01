@@ -54,7 +54,15 @@ class home extends React.Component {
 
 
           </div>
+        <div class={"container mt-3 "}>
+        <div class={"row"}>
+            <div class = {"col-3 border mx-auto text-center"}>
+                <button id={"downloadConduct"}>Download</button>
+            </div>
 
+        </div>
+        </div>
+        <script src = {"/script/downloadConduct.js"}></script>
         </body>
       </html>
     );

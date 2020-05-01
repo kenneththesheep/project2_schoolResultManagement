@@ -100,6 +100,7 @@ var responseHandler = function() {
   console.log("status code", this.status);
   const information = JSON.parse(this.responseText);
   console.log(information);
+
   if(information.initialisation)
   {
     console.log("Something will happen");
@@ -110,17 +111,20 @@ var responseHandler = function() {
     let container = document.createElement("div");
     container.classList.add("container");
     container.classList.add("border");
+    container.classList.add("longBox");
+    container.classList.add("mt-5");
+    container.classList.add("pb-5");
     document.body.appendChild(container);
 
     let topRow = document.createElement("div");
     topRow.classList.add("row");
-    topRow.classList.add("border");
+
     topRow.classList.add("mt-5");
     container.appendChild(topRow);
 
     let topCol = document.createElement("div");
     topCol.classList.add("col-12");
-    topCol.classList.add("border");
+
     topCol.classList.add("text-center");
     topCol.classList.add("mt-5");
     topRow.appendChild(topCol);
@@ -131,13 +135,13 @@ var responseHandler = function() {
 
     let bottomRow = document.createElement("div");
     bottomRow.classList.add("row");
-    bottomRow.classList.add("border");
+
     bottomRow.classList.add("mt-5");
     container.appendChild(bottomRow);
 
     let bottomCol = document.createElement("div");
     bottomCol.classList.add("col-12");
-    bottomCol.classList.add("border");
+
     bottomCol.classList.add("text-center");
     bottomCol.classList.add("mt-5");
     bottomRow.appendChild(bottomCol);
@@ -161,18 +165,21 @@ var responseHandler = function() {
 
     let container = document.createElement("div");
     container.classList.add("container");
+    container.classList.add("longBox");
+    container.classList.add("mt-5");
+    container.classList.add("pb-5");
     container.classList.add("border");
     document.body.appendChild(container);
 
     let topRow = document.createElement("div");
     topRow.classList.add("row");
-    topRow.classList.add("border");
+    //topRow.classList.add("border");
     topRow.classList.add("mt-5");
     container.appendChild(topRow);
 
     let topCol = document.createElement("div");
     topCol.classList.add("col-12");
-    topCol.classList.add("border");
+    //topCol.classList.add("border");
     topCol.classList.add("text-center");
     topCol.classList.add("mt-5");
     topRow.appendChild(topCol);
@@ -183,7 +190,7 @@ var responseHandler = function() {
 
     let bottomRow = document.createElement("div");
     bottomRow.classList.add("row");
-    bottomRow.classList.add("border");
+    //bottomRow.classList.add("border");
     bottomRow.classList.add("mt-5");
     container.appendChild(bottomRow);
 
@@ -192,6 +199,8 @@ var responseHandler = function() {
     bottomLeftCol.classList.add("border");
     bottomLeftCol.classList.add("text-center");
     bottomLeftCol.classList.add("mt-5");
+    bottomLeftCol.classList.add("pt-3");
+        bottomLeftCol.classList.add("pb-3");
     bottomRow.appendChild(bottomLeftCol);
 
     let spanLeftText = document.createElement("p");
@@ -207,6 +216,8 @@ var responseHandler = function() {
     bottomRightCol.classList.add("col-6");
     bottomRightCol.classList.add("border");
     bottomRightCol.classList.add("text-center");
+        bottomRightCol.classList.add("pt-3");
+        bottomRightCol.classList.add("pb-3");
     bottomRightCol.classList.add("mt-5");
     bottomRow.appendChild(bottomRightCol);
 
@@ -216,7 +227,7 @@ var responseHandler = function() {
 
     let linkRightText = document.createElement("a");
     linkRightText.setAttribute("href", "/conduct/select");
-    linkRightText.innerText = "Edit Conduct Grading and Remarks";
+    linkRightText.innerText = "Edit Conduct Grading and Remarks Or Add New Student Conduct Grading Remarks";
     bottomRightCol.appendChild(linkRightText);
 
   }
