@@ -4,8 +4,9 @@ var DefaultLayout = require('../layout/navigation')
 class home extends React.Component {
   render() {
     console.log("VIEW ALL RESULT JFDKSJAFKASJFASJFLDASJFLDASJFLADSJFDALSJFDLSAJFSL");
-    console.log(this.props.class);
+
     let subjectArray = [];
+
     for (let count = 0; count < this.props.class.length; count ++)
     {
         subjectArray.push(this.props.class[count].subjectname);
@@ -13,24 +14,74 @@ class home extends React.Component {
 
     let uniqueSet = new Set(subjectArray);
     subjectArray = [...uniqueSet];
-     console.log(subjectArray);
-console.log(this.props.class.length);
+
+
+     let firstNameoOccurance = this.props.class[0].name;
+     console.log(firstNameoOccurance);
+     let nameOccuranceArray = [1];
+     let countOccurance = [1];
+     let currentIndex = 0;
+    for (let count = 1; count < this.props.class.length; count ++)
+    {
+        console.log(this.props.class[count].name);
+        if(firstNameoOccurance === this.props.class[count].name)
+        {
+
+            nameOccuranceArray[currentIndex]++;
+            countOccurance[currentIndex]++;
+        }
+        else
+        {
+
+            firstNameoOccurance = this.props.class[count].name;
+
+            nameOccuranceArray.push(1);
+            countOccurance.push(1);
+            currentIndex++;
+        }
+    }
+
+//console.log(nameOccuranceArray);
+//console.log(countOccurance);
+currentIndex=0;
+
 
 
 
 const nameCall = index=>{
-if(index% subjectArray.length === 0)
-{
-    return <div class = {"col-3 border-top"}><p>{this.props.class[index].name}</p></div>
-}
-else if (index === this.props.class.length-1)
-{
-    return <div class = {"col-3 border-bottom"}></div>
-}
-else
-{
-    return <div class = {"col-3"}></div>
-}
+
+    if(countOccurance[currentIndex] === nameOccuranceArray[currentIndex])
+    {
+        countOccurance[currentIndex] --;
+        if(countOccurance[currentIndex]===0)
+        {
+            currentIndex ++;
+        }
+
+        return <div class = {"col-3 border-top"}><p>{this.props.class[index].name}</p></div>
+    }
+
+    if(countOccurance[currentIndex] !== nameOccuranceArray[currentIndex])
+    {
+        countOccurance[currentIndex] --;
+        if(countOccurance[currentIndex]===0)
+        {
+            currentIndex ++;
+        }
+        return <div class = {"col-3"}></div>
+    }
+
+
+    if (index === this.props.class.length-1)
+    {
+        console.log("last");
+
+        console.log(this.props.class[index].name);
+        return <div class = {"col-3 border-bottom"}></div>
+    }
+
+
+
 }
 
       const student=this.props.class.map((student, index)=>

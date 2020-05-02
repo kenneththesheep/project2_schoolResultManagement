@@ -217,9 +217,13 @@ let individualStudentReport = (data, callback) => {
     console.log("%%%%%%%%%%%%%%%%%%%%%%Conduct%%%%%%%%%%%%%%%%%%%%%%%%");
     console.log(data);
     // create a document and pipe to a blob
+    console.log(data.studentname);
+    let nameFile = data.studentname.substring(6);
+    nameFile = nameFile.replace(/\s/g, '_');
+    console.log(nameFile);
 var doc = new PDFDocument();
 let downloadDirectory = downloadsFolder();
-var stream = doc.pipe(fs.createWriteStream(downloadDirectory +'Testfile.pdf'));
+var stream = doc.pipe(fs.createWriteStream(downloadDirectory +'/'+ nameFile +'_individualReport.pdf'));
 console.log(data.stuentclass);
 console.log(downloadDirectory);
 
@@ -247,7 +251,9 @@ doc
  doc
   .text(data.stuentclass, 30, 120)
   .font('Times-Bold', 20);
-
+  console.log("length is "+ data.sa1.length);
+if(data.sa1.length===4)
+{
 doc
     .text("Subject Name", 30, 170)
     .text("SA1", 200, 170)
@@ -281,6 +287,92 @@ doc
     .text("signature", 200, 690)
     .text("Parent/Guardian's ", 390, 670)
     .text("signature", 390, 690);
+} else
+if(data.sa1.length===3)
+{
+doc
+    .text("Subject Name", 30, 170)
+    .text("SA1", 200, 170)
+    .text("SA2", 290, 170)
+    .text("Overall", 390, 170)
+    .font('Times-Roman', 20)
+    .text(data.subjectName[0], 30, 220)
+    .text(data.sa1[0], 200, 220)
+    .text(data.sa2[0], 290, 220)
+    .text(data.overall[0], 390, 220)
+    .text(data.subjectName[1], 30, 270)
+    .text(data.sa1[1], 200, 270)
+    .text(data.sa2[1], 290, 270)
+    .text(data.overall[1], 390, 270)
+    .text(data.subjectName[2], 30, 320)
+    .text(data.sa1[2], 200, 320)
+    .text(data.sa2[2], 290, 320)
+    .text(data.overall[2], 390, 320)
+    .text(data.overallPercent, 30, 430)
+    .text(data.passStatus, 30, 480)
+    .text(data.promotionStatus, 270, 480)
+    .text(data.conductgrade, 30, 530)
+    .text(data.remark, 30, 580)
+    .text("V/Principal's", 30, 670)
+    .text("signature", 30, 690)
+    .text("Teacher's ", 200, 670)
+    .text("signature", 200, 690)
+    .text("Parent/Guardian's ", 390, 670)
+    .text("signature", 390, 690);
+} else
+if(data.sa1.length===2)
+{
+doc
+    .text("Subject Name", 30, 170)
+    .text("SA1", 200, 170)
+    .text("SA2", 290, 170)
+    .text("Overall", 390, 170)
+    .font('Times-Roman', 20)
+    .text(data.subjectName[0], 30, 220)
+    .text(data.sa1[0], 200, 220)
+    .text(data.sa2[0], 290, 220)
+    .text(data.overall[0], 390, 220)
+    .text(data.subjectName[1], 30, 270)
+    .text(data.sa1[1], 200, 270)
+    .text(data.sa2[1], 290, 270)
+    .text(data.overall[1], 390, 270)
+    .text(data.overallPercent, 30, 430)
+    .text(data.passStatus, 30, 480)
+    .text(data.promotionStatus, 270, 480)
+    .text(data.conductgrade, 30, 530)
+    .text(data.remark, 30, 580)
+    .text("V/Principal's", 30, 670)
+    .text("signature", 30, 690)
+    .text("Teacher's ", 200, 670)
+    .text("signature", 200, 690)
+    .text("Parent/Guardian's ", 390, 670)
+    .text("signature", 390, 690);
+} else
+if(data.sa1.length===1)
+{
+doc
+    .text("Subject Name", 30, 170)
+    .text("SA1", 200, 170)
+    .text("SA2", 290, 170)
+    .text("Overall", 390, 170)
+    .font('Times-Roman', 20)
+    .text(data.subjectName[0], 30, 220)
+    .text(data.sa1[0], 200, 220)
+    .text(data.sa2[0], 290, 220)
+    .text(data.overall[0], 390, 220)
+    .text(data.subjectName[1], 30, 270)
+    .text(data.overallPercent, 30, 430)
+    .text(data.passStatus, 30, 480)
+    .text(data.promotionStatus, 270, 480)
+    .text(data.conductgrade, 30, 530)
+    .text(data.remark, 30, 580)
+    .text("V/Principal's", 30, 670)
+    .text("signature", 30, 690)
+    .text("Teacher's ", 200, 670)
+    .text("signature", 200, 690)
+    .text("Parent/Guardian's ", 390, 670)
+    .text("signature", 390, 690);
+}
 
 doc
     .moveTo(20, 200)
