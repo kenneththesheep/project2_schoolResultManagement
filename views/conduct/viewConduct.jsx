@@ -46,17 +46,17 @@ class home extends React.Component {
             </div>
             <div class = {"row LandingHeaderBox mb-1 pl-2"}>
 
-            <div class = {"col-2 text-center "}>
+            <div class = {"col-2 text-center columnHeaderText"}>
                 <p class={"mt-2"}>Name</p>
             </div>
-           <div class = {"col-2 "}>
+           <div class = {"col-2 columnHeaderText"}>
                 <p class={"mt-2"}>Conduct Grade</p>
             </div>
-            <div class = {"col-6 text-center"}>
+            <div class = {"col-6 text-center columnHeaderText"}>
                 <p class={"mt-2"}>Remark</p>
             </div>
 
-            <div class = {"col-2  "}>
+            <div class = {"col-2  columnHeaderText"}>
                   <p class={"mt-2"}>Action</p>
             </div>
             </div>
@@ -72,7 +72,7 @@ class home extends React.Component {
           </div>
         <div class={"container mt-3 longBox"}>
         <div class={"row"}>
-            <div class = {"col-3 border mx-auto text-center"}>
+            <div class = {"col-3 mx-auto text-center"}>
                 <button id={"downloadConduct"}>Download</button>
             </div>
 

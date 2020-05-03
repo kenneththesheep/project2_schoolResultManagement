@@ -21,7 +21,7 @@
 	font-size:10px;
 }
 .input_text{
-	width:45%;
+	width:100%;
 }
 
  .home-action-row{
@@ -114,4 +114,7 @@ font-weight:900;
 .selectedMiniBox{
 background-color:#DEDDDD;
 
+}
+.columnHeaderText{
+font-weight: 900;
 }
