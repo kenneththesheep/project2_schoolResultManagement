@@ -110,7 +110,7 @@ var responseHandler = function() {
 
     let container = document.createElement("div");
     container.classList.add("container");
-    container.classList.add("border");
+
     container.classList.add("longBox");
     container.classList.add("mt-3");
     document.body.appendChild(container);
@@ -122,36 +122,62 @@ var responseHandler = function() {
 
     let topCol = document.createElement("div");
     topCol.classList.add("col-12");
-
     topCol.classList.add("text-center");
-    topCol.classList.add("mt-5");
+    topCol.classList.add("mb-3");
+    topCol.classList.add("LandingTitleBox");
     topRow.appendChild(topCol);
 
     let header = document.createElement("h1");
-    header.innerText = `Conduct Grading and Remarks`
+    header.classList.add("mt-4");
+    header.classList.add("LandingTitleText");
+    header.classList.add("mb-4");
+    header.innerText = `Conduct Grading/ HDP Page`
     topCol.appendChild(header);
+
+    let subheadingRow = document.createElement("div");
+    subheadingRow.classList.add("row");
+    subheadingRow.classList.add("LandingHeaderBox");
+    subheadingRow.classList.add("mb-1");
+    container.appendChild(subheadingRow);
+
+    let subHeadingColumn = document.createElement("div");
+    subHeadingColumn.classList.add("col-12");
+    subHeadingColumn.classList.add("pt-3");
+    subHeadingColumn.classList.add("pb-3");
+    subHeadingColumn.classList.add("text-center");
+    subheadingRow.appendChild(subHeadingColumn);
+
+    let subHeader = document.createElement("h3");
+    subHeader.innerText = "Click here to add remarks and conduct grading.";
+    subHeader.classList.add("headerText");
+    subHeadingColumn.appendChild(subHeader);
+    //bottomCol.appendChild(spanText);
 
     let bottomRow = document.createElement("div");
     bottomRow.classList.add("row");
-
-    bottomRow.classList.add("mt-5");
+    bottomRow.classList.add("align-bottom");
+    bottomRow.classList.add("LandingOptionBox")
+    bottomRow.classList.add("mb-5");
     container.appendChild(bottomRow);
 
     let bottomCol = document.createElement("div");
     bottomCol.classList.add("col-12");
 
     bottomCol.classList.add("text-center");
-    bottomCol.classList.add("mt-5");
+    bottomCol.classList.add("pt-3");
+        bottomCol.classList.add("pb-3");
     bottomRow.appendChild(bottomCol);
 
-    let spanText = document.createElement("p");
-    spanText.innerText = "Click here to add remarks and conduct grading.";
-    bottomCol.appendChild(spanText);
+
+    let para = document.createElement("p");
+    para.classList.add("mt-3");
+    bottomCol.appendChild(para)
 
     let linkText = document.createElement("a");
     linkText.setAttribute("href", "/conduct/add/");
     linkText.innerText = "Add Conduct Grading and Remarks";
-    bottomCol.appendChild(linkText);
+    linkText.classList.add("fakebutton");
+    para.appendChild(linkText);
 
   }
   else
@@ -165,68 +191,105 @@ var responseHandler = function() {
     container.classList.add("container");
     container.classList.add("longBox");
     container.classList.add("mt-3");
-    container.classList.add("pb-5");
-    container.classList.add("border");
     document.body.appendChild(container);
 
     let topRow = document.createElement("div");
     topRow.classList.add("row");
-    //topRow.classList.add("border");
-    topRow.classList.add("mt-5");
+    topRow.classList.add("align-bottom");
     container.appendChild(topRow);
+
 
     let topCol = document.createElement("div");
     topCol.classList.add("col-12");
-    //topCol.classList.add("border");
     topCol.classList.add("text-center");
-    topCol.classList.add("mt-5");
+    topCol.classList.add("mb-3");
+    topCol.classList.add("LandingTitleBox");
     topRow.appendChild(topCol);
 
     let header = document.createElement("h1");
-    header.innerText = `Conduct Grading and Remarks`
+    header.classList.add("mt-4");
+    header.classList.add("LandingTitleText");
+    header.classList.add("mb-4");
+    header.innerText = `Conduct Grading/ HDP Page`
     topCol.appendChild(header);
+
+    let subheadingRow = document.createElement("div");
+    subheadingRow.classList.add("row");
+    subheadingRow.classList.add("LandingHeaderBox");
+    subheadingRow.classList.add("mb-1");
+    container.appendChild(subheadingRow);
+
+    let subHeadingleftColumn = document.createElement("div");
+    subHeadingleftColumn.classList.add("col-6");
+    subHeadingleftColumn.classList.add("pt-3");
+    subHeadingleftColumn.classList.add("pb-3");
+    subHeadingleftColumn.classList.add("text-center");
+    subheadingRow.appendChild(subHeadingleftColumn);
+
+    let subHeader = document.createElement("h3");
+    subHeader.innerText = "Click here to view remarks and conduct grading.";
+    subHeader.classList.add("headerText");
+    subHeadingleftColumn.appendChild(subHeader);
+
+    let subHeadingRightColumn = document.createElement("div");
+    subHeadingRightColumn.classList.add("col-6");
+    subHeadingRightColumn.classList.add("pt-3");
+    subHeadingRightColumn.classList.add("pb-3");
+    subHeadingRightColumn.classList.add("text-center");
+    subHeadingRightColumn.classList.add("LandingBoxes");
+    subheadingRow.appendChild(subHeadingRightColumn);
+
+    let subRightHeader = document.createElement("h3");
+    subRightHeader.innerText = "Click here to edit remarks and conduct grading.";
+    subRightHeader.classList.add("headerText");
+    subHeadingRightColumn.appendChild(subRightHeader);
+
 
     let bottomRow = document.createElement("div");
     bottomRow.classList.add("row");
-    //bottomRow.classList.add("border");
-    bottomRow.classList.add("mt-5");
+    bottomRow.classList.add("align-bottom");
+    bottomRow.classList.add("LandingOptionBox")
+    bottomRow.classList.add("mb-5");
     container.appendChild(bottomRow);
 
     let bottomLeftCol = document.createElement("div");
     bottomLeftCol.classList.add("col-6");
-    bottomLeftCol.classList.add("border");
+
     bottomLeftCol.classList.add("text-center");
-    bottomLeftCol.classList.add("mt-5");
     bottomLeftCol.classList.add("pt-3");
         bottomLeftCol.classList.add("pb-3");
     bottomRow.appendChild(bottomLeftCol);
 
-    let spanLeftText = document.createElement("p");
-    spanLeftText.innerText = "Click here to view remarks and conduct grading.";
-    bottomLeftCol.appendChild(spanLeftText);
+    let paraLeft = document.createElement("p");
+    paraLeft.classList.add("mt-3");
+    bottomLeftCol.appendChild(paraLeft)
 
-    let linkLeftText = document.createElement("a");
-    linkLeftText.setAttribute("href", "/conduct/view");
-    linkLeftText.innerText = "View Conduct Grading and Remarks";
-    bottomLeftCol.appendChild(linkLeftText);
+    let linkTextLeft = document.createElement("a");
+    linkTextLeft.setAttribute("href", "/conduct/view/");
+    linkTextLeft.innerText = "View";
+    linkTextLeft.classList.add("fakebutton");
+    paraLeft.appendChild(linkTextLeft);
 
-    let bottomRightCol = document.createElement("div");
+   let bottomRightCol = document.createElement("div");
     bottomRightCol.classList.add("col-6");
-    bottomRightCol.classList.add("border");
+
     bottomRightCol.classList.add("text-center");
-        bottomRightCol.classList.add("pt-3");
-        bottomRightCol.classList.add("pb-3");
-    bottomRightCol.classList.add("mt-5");
+    bottomRightCol.classList.add("pt-3");
+    bottomRightCol.classList.add("pb-3");
+    bottomRightCol.classList.add("LandingBoxes");
     bottomRow.appendChild(bottomRightCol);
 
-    let spanRightText = document.createElement("p");
-    spanRightText.innerText = "Click here to edit remarks and conduct grading.";
-    bottomRightCol.appendChild(spanRightText);
+    let paraRight = document.createElement("p");
+    paraRight.classList.add("mt-3");
+    bottomRightCol.appendChild(paraRight)
 
-    let linkRightText = document.createElement("a");
-    linkRightText.setAttribute("href", "/conduct/select");
-    linkRightText.innerText = "Edit Conduct Grading and Remarks Or Add New Student Conduct Grading Remarks";
-    bottomRightCol.appendChild(linkRightText);
+    let linkTextRight = document.createElement("a");
+    linkTextRight.setAttribute("href", "/conduct/select/");
+    linkTextRight.innerText = "Edit";
+    linkTextRight.classList.add("fakebutton");
+    paraRight.appendChild(linkTextRight);
+
+
 
   }
 };
