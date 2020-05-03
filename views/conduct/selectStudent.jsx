@@ -20,30 +20,38 @@ class home extends React.Component {
                       <DefaultLayout title={this.props.title}>
         <div>{this.props.name}</div>
       </DefaultLayout>
-        <div class={"container mt-3 "}>
-        <div class={"row align-bottom mb-5"}>
-            <div class={"col-12 mt-5 text-center"}>
-            <h1  class={"mt-3"}>Select student to edit</h1>
+        <div class={"container mt-3 longBox"}>
+        <div class={"row align-bottom"}>
+            <div class={"col-12 text-center LandingTitleBox mb-3"}>
+            <h1  class={"mt-3 LandingTitleText mb-4 mt-4"}>Edit Form</h1>
             </div>
             </div>
-        </div>
+
+           <div class = {"row LandingHeaderBox mb-1"}>
+                <div class= {"col-12 text-center  pt-3 pb-3 my-auto"}>
+                <h3  class={"headerText "}>Select student to edit</h3>
+                </div>
+
+
+            </div>
+
         <form  class={"mt-2"} action="/conduct/student" method="POST">
 
-        <div class = {"row border pt-5"}>
-          <div class = {"col-12 text-center"}>
-          <select name = "student" size = "1">
+            <div class={"row align-bottom mb-3 LandingOptionBox"}>
+            <div class={"col-12 pt-5 pb-5 text-center"}>
+          <select name = "student" size = "1" class={"mt-3"}>
                 {student}
             </select>
         </div>
         </div>
 
-          <div class = {"row border pt-5"}>
+          <div class = {"row"}>
           <div class = {"col-12 text-center"}>
             <input type="submit" value="Submit" style={{width:"25%"}}/>
             </div>
             </div>
           </form>
-
+        </div>
         </body>
       </html>
     );

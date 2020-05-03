@@ -14,23 +14,22 @@ const editUrl = '/conduct/'+ this.props.conduct.id+"?_method=put";
                       <DefaultLayout title={this.props.title}>
         <div>{this.props.name}</div>
       </DefaultLayout>
-          <div class={"container mt-3 "}>
+          <div class={"container mt-3 pb-3"} style = {{width:"8000px"}}>
             <div class={"row"}>
-                <div class={"col-12"}>
-                    <h1>Edit Conduct for {this.props.students[0].name}</h1>
+                <div class = {"col-12 text-center LandingTitleBox mb-3"}>
+                    <h1 class={"mt-3 LandingTitleText mb-4 mt-4"}>Edit Conduct for {this.props.students[0].name}</h1>
                 </div>
             </div>
             <form  class={"mt-2"} action={editUrl} method="POST">
           <input  class= "formClass" type="text" name="formClassId" value = {this.props.conduct.id} style={{display:"none"}} ></input>
 
-          <div class={"row align-bottom border"}>
-            <div class = {"col-1 my-auto"}>
+          <div class={"row align-bottom border mt-2 LandingOptionBox"}>
+             <div class = {"col-3 my-auto"}>
                 <p>{this.props.students[0].name}</p>
             </div>
+
             <div class={"col-2 my-auto text-center "}>
-            <span>Select Conduct Grade</span>
-            </div>
-            <div class={"col-2 my-auto text-center "}>
+            <p>Select Conduct Grade</p>
                 <select name = "conductGrade" id = {this.props.students[0].student_id} size="1" required value= {this.props.conduct.conductgrade}>
                     <option value ="">NA</option>
                     <option value ="Excellent">Excellent</option>
@@ -62,7 +61,7 @@ const editUrl = '/conduct/'+ this.props.conduct.id+"?_method=put";
             </div>
 
 
-          <div class = {"row border pt-5"}>
+          <div class = {"row pt-5 pb-5 mt-2"}>
           <div class = {"col-12 text-center"}>
             <input type="submit" value="Submit" style={{width:"25%"}}/>
             </div>

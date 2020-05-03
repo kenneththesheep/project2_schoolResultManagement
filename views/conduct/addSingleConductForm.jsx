@@ -15,21 +15,19 @@ class home extends React.Component {
                       <DefaultLayout title={this.props.title}>
         <div>{this.props.name}</div>
       </DefaultLayout>
-          <div class={"container mt-3"} style = {{width:"8000px"}}>
-          <div class = {"row border"}>
-          <div class = {"col-12 text-center"}>
-          <h1>Add Conduct Grading student {this.props.student_id}</h1>
+          <div class={"container mt-3 pb-3"} style = {{width:"8000px"}}>
+          <div class = {"row"}>
+          <div class = {"col-12 text-center LandingTitleBox mb-3"}>
+          <h1 class={"mt-3 LandingTitleText mb-4 mt-4"}>Add Conduct Grading student {this.props.student_id}</h1>
           </div>
           </div>
 
           <form  class={"mt-2"} action="/conduct/single" method="POST">
 
-          <div class={"row align-bottom border"}>
+          <div class={"row align-bottom border mt-2 LandingOptionBox"}>
 
-            <div class={"col-2 my-auto text-center "}>
-            <span>Select Conduct Grade</span>
-            </div>
-            <div class={"col-2 my-auto text-center "}>
+<div class={"col-4 my-auto text-center "}>
+            <p>Select Conduct Grade</p>
                 <select name = "conductGrade" id = {this.props.student_id} size="1" required>
                     <option value ="">NA</option>
                     <option value ="Excellent">Excellent</option>
