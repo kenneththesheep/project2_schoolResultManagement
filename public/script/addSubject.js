@@ -18,10 +18,37 @@ function selectName(event){
         console.log(subject);
         console.log(subject.length);
         let subjectEntryBox = document.getElementById("subject");
+
         subjectEntryBox.innerHTML = "";
-        let header = document.createElement('h3');
-        header.innerText = "Select Subjects to add"
-        subjectEntryBox.appendChild(header);
+        let newSubjectHeader = document.createElement("div");
+        newSubjectHeader.classList.add("row");
+        newSubjectHeader.classList.add("text-center");
+        newSubjectHeader.classList.add("mb-1")
+        subjectEntryBox.appendChild(newSubjectHeader);
+        let newSubjectColumn = document.createElement("div");
+        newSubjectColumn.classList.add("col-12");
+        newSubjectColumn.classList.add("text-center");
+        newSubjectColumn.classList.add("selectedMiniHeaderBox");
+        newSubjectHeader.appendChild(newSubjectColumn)
+
+
+
+
+        let header = document.createElement("h2");
+        header.innerText = " Add Subjects";
+        newSubjectColumn.appendChild(header);
+
+        let newSubjectTakenHeader = document.createElement("div");
+        newSubjectTakenHeader.classList.add("row");
+        newSubjectTakenHeader.classList.add("text-center");
+        subjectEntryBox.appendChild(newSubjectTakenHeader);
+        let newSubjectTakenColumn = document.createElement("div");
+        newSubjectTakenColumn.classList.add("col-12");
+        newSubjectTakenColumn.classList.add("text-left");
+        newSubjectTakenColumn.classList.add("selectedMiniBox");
+        newSubjectTakenHeader.appendChild(newSubjectTakenColumn)
+
+
         for( let subjectCount = 0; subjectCount < subject.length; subjectCount ++)
         {
             console.log (subject [ subjectCount ]);
@@ -34,11 +61,11 @@ function selectName(event){
             inputBox.setAttribute = ("class", "ml-3");
             inputBox.name = "subject_id";
             inputBox.value = subject [subjectCount] .id;
-            subjectEntryBox.appendChild(inputBox);
-            subjectEntryBox.appendChild(space);
-            subjectEntryBox.appendChild(label);
+            newSubjectTakenColumn.appendChild(inputBox);
+            newSubjectTakenColumn.appendChild(space);
+            newSubjectTakenColumn.appendChild(label);
             let lineBreak = document.createElement ( "br");
-            subjectEntryBox.appendChild(lineBreak);
+            newSubjectTakenColumn.appendChild(lineBreak);
 
         }
         ////// Add the select box here

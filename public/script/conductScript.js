@@ -113,13 +113,11 @@ var responseHandler = function() {
     container.classList.add("border");
     container.classList.add("longBox");
     container.classList.add("mt-3");
-    container.classList.add("pb-5");
     document.body.appendChild(container);
 
     let topRow = document.createElement("div");
     topRow.classList.add("row");
-
-    topRow.classList.add("mt-5");
+    topRow.classList.add("align-bottom");
     container.appendChild(topRow);
 
     let topCol = document.createElement("div");

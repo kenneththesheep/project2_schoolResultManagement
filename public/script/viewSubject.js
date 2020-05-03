@@ -18,16 +18,41 @@ function selectName(event){
         console.log(subject);
         console.log(subject.length);
         let subjectEntryBox = document.getElementById("subject");
+
         subjectEntryBox.innerHTML = "";
+        let newSubjectHeader = document.createElement("div");
+        newSubjectHeader.classList.add("row");
+        newSubjectHeader.classList.add("text-center");
+        newSubjectHeader.classList.add("mb-1")
+        subjectEntryBox.appendChild(newSubjectHeader);
+        let newSubjectColumn = document.createElement("div");
+        newSubjectColumn.classList.add("col-12");
+        newSubjectColumn.classList.add("text-center");
+        newSubjectColumn.classList.add("selectedMiniHeaderBox");
+        newSubjectHeader.appendChild(newSubjectColumn)
+
+
         let header = document.createElement("h2");
-        header.innerText = " Subject taken";
-        subjectEntryBox.appendChild(header);
+        header.innerText = " Subjects taken";
+        newSubjectColumn.appendChild(header);
+
+        let newSubjectTakenHeader = document.createElement("div");
+        newSubjectTakenHeader.classList.add("row");
+        newSubjectTakenHeader.classList.add("text-center");
+        subjectEntryBox.appendChild(newSubjectTakenHeader);
+        let newSubjectTakenColumn = document.createElement("div");
+        newSubjectTakenColumn.classList.add("col-12");
+        newSubjectTakenColumn.classList.add("text-center");
+        newSubjectTakenColumn.classList.add("selectedMiniBox");
+        newSubjectTakenHeader.appendChild(newSubjectTakenColumn)
+
+
         for(let subjectCount = 0; subjectCount < subject.length; subjectCount ++)
         {
             console.log(subject[subjectCount]);
             let paragraph = document.createElement('p');
             paragraph.innerText = subject[subjectCount].subjectname;
-            subjectEntryBox.appendChild(paragraph);
+            newSubjectTakenColumn.appendChild(paragraph);
         }
         ////// Add the select box here
     }

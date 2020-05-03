@@ -18,14 +18,39 @@ function selectName(event){
         console.log(subject);
         console.log(subject.length);
         let subjectEntryBox = document.getElementById("subject");
+
         subjectEntryBox.innerHTML = "";
-        let header = document.createElement('h3');
+        let newSubjectHeader = document.createElement("div");
+        newSubjectHeader.classList.add("row");
+        newSubjectHeader.classList.add("text-center");
+        newSubjectHeader.classList.add("mb-1")
+        subjectEntryBox.appendChild(newSubjectHeader);
+        let newSubjectColumn = document.createElement("div");
+        newSubjectColumn.classList.add("col-12");
+        newSubjectColumn.classList.add("text-center");
+        newSubjectColumn.classList.add("selectedMiniHeaderBox");
+        newSubjectHeader.appendChild(newSubjectColumn)
+
+
+
+        let header = document.createElement('h2');
         header.innerText = "Select Subject to remove"
-        subjectEntryBox.appendChild(header);
+        newSubjectColumn.appendChild(header);
+
+        let newSubjectTakenHeader = document.createElement("div");
+        newSubjectTakenHeader.classList.add("row");
+        newSubjectTakenHeader.classList.add("text-center");
+        subjectEntryBox.appendChild(newSubjectTakenHeader);
+        let newSubjectTakenColumn = document.createElement("div");
+        newSubjectTakenColumn.classList.add("col-12");
+        newSubjectTakenColumn.classList.add("text-center");
+        newSubjectTakenColumn.classList.add("selectedMiniBox");
+        newSubjectTakenHeader.appendChild(newSubjectTakenColumn)
+
         let subjectBox = document.createElement('select');
         subjectBox.name = 'subject_id';
         subjectBox.size = 1;
-        subjectEntryBox.appendChild(subjectBox)
+        newSubjectTakenColumn.appendChild(subjectBox)
         for( let subjectCount = 0; subjectCount < subject.length; subjectCount ++)
         {
             let selectOption = document.createElement('option');

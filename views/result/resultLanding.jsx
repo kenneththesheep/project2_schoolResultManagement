@@ -13,42 +13,77 @@ class home extends React.Component {
         <div>{this.props.name}</div>
       </DefaultLayout>
           <div class={"container mt-3 longBox"}>
-            <div class={"row align-bottom mb-5"}>
-            <div class={"col-12 mt-5 text-center"}>
-            <h1  class={"mt-3"}>Welcome</h1>
+            <div class={"row align-bottom"}>
+            <div class={"col-12 text-center LandingTitleBox mb-3"}>
+            <h1  class={"mt-3 LandingTitleText mb-4 mt-4"} >RESULT MANAGEMENT</h1>
             </div>
             </div>
-            <div class={"row align-bottom mb-5"}>
-            <div class={"col-3 mt-5 border"}>
-            <h3  class={"mt-3"}>View/ Assign/ Remove subject to students</h3>
-            <p class ={"mt-5"}><a href={"/results/viewSubject"} class={"fakebutton"}>View</a></p>
-            <p class ={"mt-5"}><a href={"/results/addSubject"} class={"fakebutton"}>Assign</a></p>
-            <p class ={"mt-5"}><a href={"/results/removeSubject"} class={"fakebutton"}>Remove</a></p>
+
+            <div class = {"row LandingHeaderBox mb-1"}>
+                <div class= {"col-3 text-center  pt-3 pb-3 my-auto"}>
+                <h3  class={"headerText "}>View/ Assign/ Remove subject to students</h3>
+                </div>
+
+                <div class= {"col-3  text-center LandingBoxes pt-3 pb-3"}>
+                <h3  class={"headerText"}>Enter Results By Subjects</h3>
+                </div>
+
+                <div class= {"col-3  text-center  LandingBoxes pt-3 pb-3"}>
+
+                <h3  class={"headerText"}>Edit Result</h3>
+                </div>
+
+                <div class= {"col-3  text-center LandingBoxes pt-3 pb-3"}>
+                <h3  class={"headerText"}>View/Print Result</h3>
+                </div>
+
             </div>
-            <div class={"col-3 mt-5 border"} id={"addResult"}>
-            <h3  class={"mt-3"}>Enter Results By Subjects</h3>
+
+            <div class={"row align-bottom mb-5 LandingOptionBox"}>
+                <div class={"col-3 pt-3 border "}>
+                <div class ={"row"}>
+                <div class={"col-12 text-center"}>
+                <p class ={"mt-2"}><a href={"/results/viewSubject"} class={"fakebutton"}>View</a></p>
+                </div>
+                </div>
+
+                <div class ={"row"}>
+                <div class={"col-12 text-center"}>
+                <p class ={"mt-3"}><a href={"/results/addSubject"}
+                class={"fakebutton"}>Assign</a></p>
+                </div>
+                </div>
+
+                <div class ={"row"}>
+                <div class={"col-12 text-center"}>
+                <p class ={"mt-3"}><a href={"/results/removeSubject"} class={"fakebutton"}>Remove</a></p>
+                </div>
+                </div>
+            </div>
+            <div class={"col-3  LandingBoxes pt-3 pb-3"} id={"addResult"}>
+
+
+
+            </div>
+
+            <div class={"col-3  LandingBoxes pt-3 pb-3"} id={"editResult"}>
 
 
             </div>
 
-            <div class={"col-3 mt-5 border"} id={"editResult"}>
-            <h3  class={"mt-3"}>Edit Result</h3>
+            <div class={"col-3  LandingBoxes pt-3 pb-3"} id={"resultColumn"}>
 
-            </div>
-
-            <div class={"col-3 mt-5 border"}>
-            <h3  class={"mt-3"}>View/Print Result</h3>
             <p id = {"noResult"}> No result to View </p>
 
             <div class = {"row"} id ={"top_result_row"}>
             <div class ={"col-12"}>
-            <p class ={"mt-5"}><a href={"/results/view/all"} id = {"link_to_view"}  class={"fakebutton"}>View All Results</a></p>
+            <p class ={"mt-3"}><a href={"/results/view/all"} id = {"link_to_view"}  class={"fakebutton"}>View All Results</a></p>
             </div>
             </div>
 
             <div class = {"row"} >
             <div class ={"col-12"} id ={"middle_result_row"}>
-            <p class ={"mt-5"} id={"middleRowText"}>View By subject</p>
+            <p class ={"mt-2"} id={"middleRowText"}>View By subject</p>
 
             </div>
             </div>

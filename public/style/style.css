@@ -5,7 +5,7 @@
 }
 
 .longBox{
-	background-color: #CCCCCC;
+	background-color: #FFF;
 	width: 60%;
 	margin-top:30px;
 }
@@ -31,15 +31,87 @@
  	display:none;
  }
 
+/* .fakebutton {
+         background-color: #F2F2F2;
+         border: none;
+         color: black;
+         padding: 5px 45px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+
+         margin: 4px 0px;
+         cursor: pointer;
+         }*/
+
  .fakebutton {
          background-color: #F2F2F2;
          border: none;
          color: black;
-         padding: 5px 20px;
+         width:150px;
          text-align: center;
          text-decoration: none;
          display: inline-block;
-         font-size: 15px;
-         margin: 4px 2px;
+
+
          cursor: pointer;
          }
+/*Result management*/
+.LandingTitleBox{
+	background-color: #262F3D;
+}
+.selecttBox{
+	width:150px;
+}
+.Landingbutton{
+	width:150px;
+}
+.LandingTitleText{
+font-size: 40px;
+font-weight: 900;
+font-family: "Arial Black", Gadget, sans-serif;
+color: white;
+
+}
+
+.LandingHeaderBox{
+	background-color: #B2B2B2;
+
+}
+.LandingHeaderBox h3{
+	font-size: 17px;
+	font-weight: 900;
+}
+.LandingBoxes{
+	border-left: 4px solid #FFF;
+}
+
+.LandingOptionBox{
+	background-color:#CCCCCC;
+	font-size:15px;
+}
+
+.insertAddResultButtonMargin{
+	margin-top:30px;
+}
+
+.insertEditResultButtonMargin{
+	margin-top:15px;
+}
+
+
+.selectedMiniHeaderBox{
+background-color:#ADADAD;
+
+}
+
+.selectedMiniHeaderBox h2{
+font-size:20px;
+font-weight:900;
+
+}
+
+.selectedMiniBox{
+background-color:#DEDDDD;
+
+}

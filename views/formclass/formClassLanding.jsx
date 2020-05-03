@@ -20,19 +20,37 @@ class home extends React.Component {
         <div>{this.props.name}</div>
       </DefaultLayout>
           <div class={"container mt-3  longBox "}>
-            <div class={"row align-bottom mb-5"}>
-            <div class={"col-12 mt-5 text-center"}>
-            <h1  class={"mt-3"}>Welcome to {this.props.class[0].classname} matters</h1>
+            <div class={"row align-bottom"}>
+            <div class={"col-12 text-center LandingTitleBox mb-3"}>
+            <h1  class={"mt-3 LandingTitleText mb-4 mt-4"}>Welcome to {this.props.class[0].classname} matters</h1>
             </div>
-            </div>
-            <div class={"row align-bottom mb-5"}>
-            <div class={"col-4 mt-5 border"}>
-            <h4  class={"mt-3"}>View all students</h4>
-            <p class ={"mt-5"}><a href={"/formclass/all"}>View all students</a></p>
             </div>
 
-            <div class={"col-4 mt-5 border"}>
-            <h4  class={"mt-3"}>View Individual Student</h4>
+
+           <div class = {"row LandingHeaderBox mb-1"}>
+                <div class= {"col-4 text-center  pt-3 pb-3 my-auto"}>
+                <h3  class={"headerText "}>View All Students</h3>
+                </div>
+
+                <div class= {"col-4  text-center LandingBoxes pt-3 pb-3"}>
+                <h3  class={"headerText"}>View Individual Student</h3>
+                </div>
+
+                <div class= {"col-4  text-center  LandingBoxes pt-3 pb-3"}>
+
+                <h3  class={"headerText"}>Add New Student</h3>
+                </div>
+
+
+            </div>
+
+            <div class={"row align-bottom mb-5 LandingOptionBox"}>
+            <div class={"col-4 pt-3  text-center"}>
+            <p class ={"mt-3"}><a class={"fakebutton"} href={"/formclass/all"}>View all students</a></p>
+            </div>
+
+            <div class={"col-4  LandingBoxes pt-3 pb-3 text-center"}>
+
 
             <form method="GET" action="/formclass/student/"  >
             <div class = {"row"}>
@@ -50,9 +68,9 @@ class home extends React.Component {
             </form>
             </div>
 
-            <div class={"col-4 mt-5 border"}>
-            <h4  class={"mt-3"}>Add New Student</h4>
-            <p class ={"mt-5"}><a href={"/formclass/student/add"}>Add New Student</a></p>
+            <div class={"col-4  LandingBoxes pt-3 pb-3 text-center"}>
+
+            <p class ={"mt-3"}><a class={"fakebutton"} href={"/formclass/student/add"}>Add New Student</a></p>
             </div>
             </div>
 

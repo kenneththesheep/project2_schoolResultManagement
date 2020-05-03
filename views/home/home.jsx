@@ -15,27 +15,54 @@ class home extends React.Component {
         <div>{this.props.name}</div>
       </DefaultLayout>
 
-          <div class={"container mt-3 tweetBox"}>
-            <div class={"row align-bottom mb-5"}>
-            <div class={"col-12 mt-5 text-center"}>
-            <h1  class={"mt-3"}>Welcome {this.props.username}</h1>
+          <div class={"container mt-3 longBox"}>
+            <div class={"row align-bottom"}>
+            <div class={"col-12 text-center LandingTitleBox mb-3"}>
+            <h1  class={"mt-3 LandingTitleText mb-4 mt-4"} >Welcome {this.props.username}</h1>
             </div>
             </div>
-            <div class={"row align-bottom mb-5"}>
-            <div class={"col-4 mt-5 border"}>
-            <h3  class={"mt-3"}>Form class matters</h3>
-            <p class ={"mt-5"}><a href={"/formclass/"}>Form class matters</a></p>
-            </div>
-            <div class={"col-4 mt-5 border"}>
-            <h3  class={"mt-3"}>Conduct Grading and HDP</h3>
-            <p class ={"mt-5 mb-5 home-action-row"}><a href={"/conduct/"}>Conduct Grading and remarks</a></p>
+
+            <div class = {"row LandingHeaderBox mb-1"}>
+                <div class= {"col-4 text-center  pt-3 pb-3 my-auto"}>
+                <h3  class={"headerText "}>Form class matters</h3>
+                </div>
+
+                <div class= {"col-4  text-center LandingBoxes pt-3 pb-3"}>
+                <h3  class={"headerText"}>Conduct Grading and HDP</h3>
+                </div>
+
+                <div class= {"col-4  text-center  LandingBoxes pt-3 pb-3"}>
+
+                <h3  class={"headerText"}>Result Management</h3>
+                </div>
+
 
             </div>
 
-            <div class={"col-4 mt-5 border"}>
-            <h3  class={"mt-3"}>Result Management</h3>
-            <p class ={"mt-5"}><a href={"/results/"}>Result Management</a></p>
+            <div class={"row align-bottom mb-5 LandingOptionBox"}>
+            <div class={"col-4 pt-3  text-center"}>
+
+            <p class ={"mt-3"}><a href={"/formclass/"}
+                class={"fakebutton"}>Form class matters</a></p>
+
             </div>
+
+             <div class={"col-4  LandingBoxes pt-3 pb-3 text-center"}   >
+
+                <p class ={"mt-3"}><a href={"/conduct/"}
+                class={"fakebutton"}>Conduct Grading and HDP</a></p>
+
+
+            </div>
+
+             <div class={"col-4  LandingBoxes pt-3 pb-3 text-center"}   >
+
+                <p class ={"mt-3"}><a href={"/results/"}
+                class={"fakebutton"}>Result Management</a></p>
+
+
+            </div>
+
             </div>
 
 

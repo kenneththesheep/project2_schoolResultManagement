@@ -6,6 +6,7 @@ var responseHandler = function() {
 
 
         let subjectBox = document.createElement('select');
+        subjectBox.classList.add("selecttBox");
         subjectBox.name = 'subject_id';
         subjectBox.size = 1;
         subjectBox.required=true;
@@ -22,15 +23,30 @@ var responseHandler = function() {
 
 
   let addColumn = document.getElementById('addResult');
+  let newAddRow = document.createElement('div');
+  newAddRow.classList.add('row');
+  addColumn.appendChild(newAddRow);
+  let newAddRowColumn = document.createElement('div');
+  newAddRowColumn.classList.add('col-12');
+  newAddRowColumn.classList.add('text-center');
+  newAddRow.appendChild(newAddRowColumn);
   let addForm =document.createElement('form');
   addForm.classList.add("mt-2");
   addForm.action="/results/add";
   addForm.method="GET";
-  addColumn.appendChild(addForm);
+  newAddRowColumn.appendChild(addForm);
+
+  let newSecondRow = document.createElement('div');
+  newSecondRow.classList.add('row');
+  addColumn.appendChild(newSecondRow);
+
+
   addForm.appendChild(subjectBox);
   let insertButton=document.createElement('input');
   insertButton.type="submit";
-  insertButton.value="Enter Results";
+  insertButton.value="Enter Subject Result";
+  insertButton.classList.add("Landingbutton");
+  insertButton.classList.add("insertAddResultButtonMargin");
     addForm.appendChild(insertButton);
 
 
@@ -54,10 +70,12 @@ var responseHandler2 = function()
 
     if(check.length!==0 && link_to_view.classList.contains("hidden"))
     {
+        let resultColumn= document.getElementById("resultColumn");
         link_to_view.classList.remove("hidden");
         link_to_view.classList.add("fakebutton");
         let noResult = document.getElementById("noResult");
-        noResult.classList.add("hidden");
+        resultColumn.removeChild(noResult);
+        //noResult.classList.add("hidden");
         middle_text.classList.remove("hidden");
         bottom_text.classList.remove("hidden");
     }
@@ -65,12 +83,14 @@ var responseHandler2 = function()
     if(check.length!==0)
     {
         let subjectBox2 = document.createElement('select');
+          subjectBox2.classList.add("selecttBox");
         subjectBox2.name = 'subject_id';
         subjectBox2.size = 1;
         subjectBox2.required=true;
 
         let subjectBox3 = document.createElement('select');
         subjectBox3.name = 'subject_id';
+        subjectBox3.classList.add("selecttBox");
         subjectBox3.size = 1;
         subjectBox3.required=true;
 
@@ -110,7 +130,9 @@ var responseHandler2 = function()
         editForm.appendChild(subjectBox2);
         let insertButton2=document.createElement('input');
         insertButton2.type="submit";
-        insertButton2.value="Select Subject To Edit";
+        insertButton2.value="Edit Subject Result";
+        insertButton2.classList.add("Landingbutton");
+        insertButton2.classList.add("insertEditResultButtonMargin");
         editForm.appendChild(insertButton2);
 
 
@@ -125,7 +147,8 @@ var responseHandler2 = function()
         viewBySubjectForm.appendChild(subjectBox3);
         let insertButton3=document.createElement('input');
         insertButton3.type="submit";
-        insertButton3.value="Select Subject To View";
+        insertButton3.value="View Result";
+        insertButton3.classList.add("Landingbutton");
         viewBySubjectForm.appendChild(insertButton3);
 
 
@@ -137,6 +160,7 @@ var responseHandler2 = function()
         studentBox.name = 'student_id';
         studentBox.size = 1;
         studentBox.required=true;
+        studentBox.classList.add("selecttBox");
         for( let studentCount = 0; studentCount < students.students.length; studentCount ++)
         {
             let selectOption = document.createElement('option');
@@ -156,7 +180,8 @@ var responseHandler2 = function()
         viewByStudentForm.appendChild(studentBox);
         let insertStudentButton=document.createElement('input');
         insertStudentButton.type="submit";
-        insertStudentButton.value="Select Student To View";
+        insertStudentButton.value="View Result";
+        insertStudentButton.classList.add("Landingbutton");
         viewByStudentForm.appendChild(insertStudentButton);
         console.log("bottom row")
 

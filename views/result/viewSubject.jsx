@@ -21,16 +21,22 @@ class home extends React.Component {
                       <DefaultLayout title={this.props.title}>
         <div>{this.props.name}</div>
       </DefaultLayout>
-        <div class={"container mt-3 "}>
-        <div class={"row align-bottom mb-5"}>
-            <div class={"col-12 mt-5 text-center"}>
-            <h1  class={"mt-3"}>Select student to view subject:</h1>
+        <div class={"container mt-2 longBox"}>
+        <div class={"row align-bottom mb-1"}>
+            <div class={"col-12 mt-2 LandingTitleBox text-center"}>
+            <h1  class={"mt-3 LandingTitleText mb-4 mt-4"}>View Subject:</h1>
             </div>
             </div>
-        </div>
+
+            <div class = {"row LandingHeaderBox mb-1"}>
+                <div class= {"col-12 text-center  pt-3 pb-3 my-auto"}>
+                <h3  class={"headerText "}>Select Student to view subject taken: </h3>
+                </div>
 
 
-        <div class = {"row border pt-5"}>
+            </div>
+
+        <div class = {"row  pt-5"}>
           <div class = {"col-6 text-center"}>
           <select name = "student" size = "1" id = {"select"}>
                 {student}
@@ -40,6 +46,7 @@ class home extends React.Component {
 
         </div>
         </div>
+                </div>
 
           <script src = {"/script/viewSubject.js"}></script>
         </body>
