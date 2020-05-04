@@ -8,6 +8,11 @@ module.exports = (db) => {
 
   let conductLandClassControllerCallback = (request, response) => {
     //response.send('Welcome to conduct landing page');
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     response.render('conduct/conductLanding');
 /*       var loginSession = request.cookies['loginSession'];
         if(loginSession === undefined){
@@ -26,7 +31,11 @@ module.exports = (db) => {
   };
 
 let initialCheck = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
 
     console.log(request.body);
     let data = {};
@@ -42,7 +51,11 @@ let initialCheck = (request, response) => {
   };
 
 let addForm = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data. teacher_id = request.cookies.userId;
 
@@ -60,6 +73,11 @@ let addForm = (request, response) => {
   let processForm = (request, response) => {
     //response.send(request.body);
     //console.log(request);
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data.classIndex = parseInt(request.body.formClassId);
     data.conductGradeArray= request.body.conductGrade;
@@ -77,6 +95,11 @@ let addForm = (request, response) => {
  let conductView = (request, response) => {
     //response.send("View Conduct");
     //console.log(request);
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data. teacher_id = request.cookies.userId;
 
@@ -95,6 +118,11 @@ let addForm = (request, response) => {
 
 let editSingle = (request, response) => {
     //response.send("Edit single");
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     console.log(request.params);
     let data = {};
     data.conductId = parseInt (request.params.id);
@@ -112,7 +140,11 @@ let editSingle = (request, response) => {
   };
 
 let editSingleProcess = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     console.log(request.params);
     let data = {};
     data = request.body;
@@ -130,6 +162,11 @@ let editSingleProcess = (request, response) => {
   };
 
 let conductSelect = (request, response) => {
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let teacher_id = request.cookies.userId;
     //response.send("Hilo World");
     let data = {};
@@ -153,6 +190,11 @@ let conductSelect = (request, response) => {
 let studentProcess = (request, response) => {
     //let teacher_id = request.cookies.userId;
     //response.send(request.body);
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data.student_id = parseInt(request.body.student);
 
@@ -168,6 +210,11 @@ let studentProcess = (request, response) => {
 let singleStudentConduct = (request, response) => {
     //let teacher_id = request.cookies.userId;
     //response.send(request.params);
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data.student_id = parseInt(request.params.student_id);
     response.render('conduct/addSingleConductForm', data);
@@ -185,6 +232,11 @@ let singleStudentConduct = (request, response) => {
   let processSingleStudentConduct = (request, response) => {
     //let teacher_id = request.cookies.userId;
     //response.send(request.body);
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data = request.body;
     //response.send (data);

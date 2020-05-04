@@ -7,7 +7,11 @@ module.exports = (db) => {
    */
 
   let allSubject = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send('all subject');
           db.utility.allSubject((error, outgoingResult) => {
             response.send(outgoingResult)
@@ -16,7 +20,11 @@ module.exports = (db) => {
   };
 
   let test = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send('test');
     let data = {};
     data.teacher_id = parseInt( request.cookies.userId );
@@ -28,7 +36,11 @@ module.exports = (db) => {
 
   let students = (request, response) => {
 
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
         let data = {};
         data.id = request.cookies['userId'];
 

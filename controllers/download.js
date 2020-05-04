@@ -9,7 +9,11 @@ module.exports = (db) => {
 
 
 let initialCheck = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send("download")
     console.log(request.body);
     let data = {};
@@ -25,7 +29,11 @@ let initialCheck = (request, response) => {
   };
 
 let conduct = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send("download Conduct")
     console.log(request.body);
     let data = {};
@@ -41,7 +49,11 @@ let conduct = (request, response) => {
   };
 
 let allResult = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send("download result")
     //console.log(request.body);
     let data = {};
@@ -57,7 +69,11 @@ let allResult = (request, response) => {
   };
 
   let resultBySubject = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send("download result by subject")
     //console.log(request.body);
     let data = {};
@@ -76,7 +92,11 @@ let allResult = (request, response) => {
 
 
     let studentReport = (request, response) => {
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send("download individual report")
     console.log("jkfhdakhfkhfkjshfksahfkjhafkhafkhakfhdskjfhaskhfkjashf");
     console.log(request.body);

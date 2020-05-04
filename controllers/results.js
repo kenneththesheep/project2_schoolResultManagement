@@ -8,6 +8,11 @@ module.exports = (db) => {
 
   let resultHome = (request, response) => {
     //response.send('Welcome to result landing page');
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     response.render('result/resultLanding');
 
   };
@@ -15,7 +20,11 @@ module.exports = (db) => {
   let viewSubject = (request, response) => {
     //response.send('Welcome to view subject page');
     //response.render('result/resultLanding');
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
         let data = {};
         data.id = request.cookies['userId'];
 
@@ -29,7 +38,11 @@ module.exports = (db) => {
   let addSubject = (request, response) => {
     //response.send('Welcome to add subject page');
     //response.render('result/resultLanding');
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
         let data = {};
         data.id = request.cookies['userId'];
 
@@ -43,7 +56,11 @@ module.exports = (db) => {
   let deleteSubject = (request, response) => {
     //response.send('Welcome to delete subject page');
     //response.render('result/resultLanding');
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
         let data = {};
         data.id = request.cookies['userId'];
 
@@ -59,7 +76,11 @@ module.exports = (db) => {
     console.log(request.body);
 
     //response.render('result/resultLanding');
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
         let data = {};
         data.id = parseInt(request.body.student_id)
 
@@ -72,7 +93,11 @@ module.exports = (db) => {
      let checkSubjectTaken = (request, response) => {
     //response.send('Welcome to add subject page');
     console.log(request.body);
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.render('result/resultLanding');
 
         let data = {};

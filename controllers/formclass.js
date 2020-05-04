@@ -49,7 +49,11 @@ module.exports = (db) => {
 let redirectFormClassControllerCallback = (request, response) => {
     //response.send("Hello");
     console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     function isEmpty(obj) {
     return Object.keys(obj).length === 0;
     }
@@ -68,7 +72,11 @@ let redirectFormClassControllerCallback = (request, response) => {
 let individualFormClassControllerCallback = (request, response) => {
     console.log("Something really really happen");
     //response.send(request.params);
-
+    var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
         let data = {};
         data.id = request.params.id;
 
@@ -81,6 +89,11 @@ let individualFormClassControllerCallback = (request, response) => {
   };
 
 let addFormStudentFormClassControllerCallback = (request, response) => {
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     console.log("I can ADD");
     //response.send(request.params);
     //response.send("I can ADD");
@@ -97,6 +110,11 @@ let addFormStudentFormClassControllerCallback = (request, response) => {
 
   let addStudentClassControllerCallback = (request, response) => {
     console.log("I can process process ADD");
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let teachers_id= request.cookies.userId;
     //response.send(request.params);
     //response.send(request.body);
@@ -114,6 +132,11 @@ let addFormStudentFormClassControllerCallback = (request, response) => {
 
 let deleteStudentClassControllerCallback = (request, response) => {
     console.log("I can process delete");
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data.id = parseInt(request.params.id);
     //response.send(data);
@@ -129,6 +152,11 @@ let deleteStudentClassControllerCallback = (request, response) => {
 
   let editFormStudentClassControllerCallback = (request, response) => {
     console.log("I can show form for edit");
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     //response.send("I can show wdit form")
     let data = {};
     data.id = parseInt(request.params.id);
@@ -148,6 +176,11 @@ let deleteStudentClassControllerCallback = (request, response) => {
   let editStudentClassControllerCallback = (request, response) => {
     //console.log("I can process edit");
     //response.send("I can process edit");
+        var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
     let data = {};
     data.id = parseInt(request.params.id);
     data.student= request.body
@@ -157,6 +190,11 @@ let deleteStudentClassControllerCallback = (request, response) => {
 
       db.formClass.updateStudent(data,(error, returningResult) => {
         const url = '/formclass/student/'+data.id;
+            var loginSession = request.cookies['loginSession'];
+        if(loginSession === undefined){
+                    response.redirect('/');
+                    return;
+                }
         //response.send(returningResult);
         response.redirect(url);
         //response.render('formclass/individual_student', returningResult);
