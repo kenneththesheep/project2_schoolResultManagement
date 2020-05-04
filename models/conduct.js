@@ -298,7 +298,7 @@ let viewForm = (userlogin, callback) => {
         console.log(outgoingStatus);
 
     //console.log(outgoingStatus.class.class_id);
-                    let studentConductQuery = 'SELECT * FROM conduct INNER JOIN student_conduct ON (conduct.id = student_conduct.conduct_id) WHERE ';
+                    let studentConductQuery = 'SELECT * FROM conduct INNER JOIN student_conduct ON (conduct.id = student_conduct.conduct_id) INNER JOIN students ON (student_conduct.student_id=students.id) WHERE ';
                     let join_array=[];
         for (let count = 0; count< outgoingStatus.students.length; count ++)
         {

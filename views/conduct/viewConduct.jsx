@@ -7,10 +7,10 @@ class home extends React.Component {
       const conduct=this.props.conduct.map((conduct, index)=>
         {
             const editConductUrl = '/conduct/' + conduct.conduct_id +"/edit/";
-
+            console.log(conduct);
             return <div class= {"row mx-auto"}>
             <div class = {"col-2 border"}>
-                <p class={"mt-2"}>{this.props.students[index].name}</p>
+                <p class={"mt-2"}>{conduct.name}</p>
             </div>
            <div class = {"col-2 border"}>
                 <p class={"mt-2"}>{conduct.conductgrade}</p>
