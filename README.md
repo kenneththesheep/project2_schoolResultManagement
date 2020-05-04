@@ -13,3 +13,12 @@ https://drive.google.com/file/d/1gGcwI12QweeZugquaO_Yek7Nw9SkNRvG/view?usp=shari
 ### Wireframe
 
 https://docs.google.com/drawings/d/1gxLEjiKeF_s0EZ5Iou1B1JnYNpUhwKwge952rNxXH9U/edit?usp=sharing
+
+### Link of login page of website
+
+https://arcane-woodland-24410.herokuapp.com/
+
+
+### Git repository 
+
+https://github.com/kenneththesheep/project2_schoolResultManagement
